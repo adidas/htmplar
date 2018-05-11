@@ -1,0 +1,36 @@
+{
+  "name": "htmplar",
+  "version": "0.0.1",
+  "description": "Developer friendly email development with React",
+  "main": "index.js",
+  "repository": "https://cinarbil@tools.adidas-group.com/bitbucket/scm/cea/htmplar.git",
+  "author": "Bilal Çınarlı <bcinarli@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "scripts": {
+    "build": "node src/build"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "@babel/preset-react": "^7.0.0-beta.46",
+    "@babel/register": "^7.0.0-beta.46",
+    "chalk": "^2.4.1",
+    "clui": "^0.3.6",
+    "configstore": "^3.1.2",
+    "figlet": "^1.2.0",
+    "minimist": "^1.2.0",
+    "nodemon": "^1.17.4",
+    "rc": "^1.2.7",
+    "pretty": "^2.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "styled-components": "^3.2.6",
+    "vm": "^0.1.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "htmplar": "./src/cli/index.js"
+  }
+}
