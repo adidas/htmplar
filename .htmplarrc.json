@@ -1,5 +1,12 @@
 {
   "source": "src",
   "output": "content",
-  "extension": "html"
+  "extension": "html",
+  "block": {
+    "convert": true,
+    "prefix": "block-"
+  },
+  "server": {
+    "port": 3000
+  }
 }

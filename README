@@ -1,0 +1,46 @@
+<div style="padding: 100px; text-align: center;"><img src="./.github/images/logo.png" width="150" alt="HTML Templar" /></div>
+
+Templar
+==========
+Templar is a React to HTML converter. It is primarily created for developer friendly e-mail template creation. By leveraging the component structure with React, it composes a reusable and maintainable pipeline for the projects.
+
+Benefits:
+* Allow themable components with the help of React-JSS & Styled Components
+* Easy of use, instead of dealing with huge table based layouts, you are only dealing with small/simple React components
+* Automatic HTML conversion and e-mail friendly CSS creation
+
+## Install
+```
+npm install htmplar --save
+```
+
+```
+yarn add htmplar
+```
+
+## Configuration
+You can extend default configuration by creating a `htmplar` config file (`.htmplarrc`, `.htmplar.json`).
+```
+{
+  "source": "src",
+  "output": "content",
+  "extension": "html",
+  "blocks": {
+    "convert": true,
+    "prefix": "block-"
+  },
+  "server": {
+    "port": 3000
+  }
+}
+```
+
+### Configuration Options
+| Option | Default  | Description
+| ------ | -------- | ------------
+| source | `src`      | The folder where your components' source files 
+| output | `content`  | The output folder where the converted HTML files will be saved
+| extension | `html`  | The extension of the saved files
+| exclude | `[]` | Array of folder or file paths inside of your `source` folder. The matched files will be excluded from convertion.
+| blocks | `{}` | An object for block definitions. Normally _htmplar_ converts all matched components to HTML. You can define a prefix and convert option. Then, _htmplar_ will look for, file names with a defined _prefix_ and convert these blocks along with the other components. The difference between normal conversion and block conversion is, block only converts the HTML of that component where normal convert, adds also _DOCTYPE_, _html_, _head_ and _body_ tags
+| server | `{}` | An object for development server options like server port, assets path etc.
