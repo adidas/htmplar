@@ -10,7 +10,7 @@ const log = (...args) => {
 };
 
 const welcome = () => {
-    console.log(
+    log(
         chalk.yellow(
             figlet.textSync('htmplar', {horizontalLayout: 'full'})
         )

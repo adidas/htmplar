@@ -5,6 +5,7 @@
 
 # User-specific stuff:
 .idea
+.github
 
 # CMake
 cmake-build-debug/

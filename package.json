@@ -7,9 +7,11 @@
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.46"
   },
   "scripts": {
-    "build": "node src/build"
+    "build": "node src/build",
+    "lib": "babel src/templating --out-dir lib"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
@@ -21,9 +23,10 @@
     "configstore": "^3.1.2",
     "figlet": "^1.2.0",
     "minimist": "^1.2.0",
+    "module": "^1.2.5",
     "nodemon": "^1.17.4",
-    "rc": "^1.2.7",
     "pretty": "^2.0.0",
+    "rc": "^1.2.7",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "styled-components": "^3.2.6",

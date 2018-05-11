@@ -5,8 +5,7 @@
 const path = require('path');
 const defaultCfg = require('../.htmplarrc.json');
 const {source, output, extension}  = require('rc')('htmplar', defaultCfg);
-const {walkSync} = require('./walker');
-const {store} = require('./write');
+const {walkSync, store} = require('./utils');
 const {transform} = require('./transform');
 
 const build = () => {

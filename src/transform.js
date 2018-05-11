@@ -1,5 +1,10 @@
 const Module = require("module");
-require("@babel/register");
+require("@babel/register")({
+    presets: [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ]
+});
 const vm = require('vm');
 const babel = require('@babel/core');
 const pretty = require('pretty');
