@@ -10,6 +10,7 @@
     "@babel/cli": "^7.0.0-beta.46"
   },
   "scripts": {
+    "dev": "nodemon",
     "build": "node src/build",
     "lib": "babel src/templating --out-dir lib"
   },
@@ -21,6 +22,7 @@
     "chalk": "^2.4.1",
     "clui": "^0.3.6",
     "configstore": "^3.1.2",
+    "express": "^4.16.3",
     "figlet": "^1.2.0",
     "minimist": "^1.2.0",
     "module": "^1.2.5",

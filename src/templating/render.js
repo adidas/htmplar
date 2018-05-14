@@ -29,15 +29,22 @@ const contentBlock = SingleBlock => {
     return blockHtml(body, styles);
 };
 
-const templateHtml = (body, styles, options = {title: 'Email'}) => `
+const templateHtml = (body, styles) => `
         <!DOCTYPE html>
         <html>
             <head>
-                <title>${options.title}</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="viewport" content="width=device-width" />
                 ${styles}
             </head>
             <body>
-                ${body}
+                <table class="body">
+                    <tr>
+                        <td class="center" align="center" valign="top">
+                            ${body}
+                        </td>
+                    </tr>
+                </table>
             </body>
         </html>
     `;

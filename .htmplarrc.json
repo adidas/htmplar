@@ -1,6 +1,7 @@
 {
   "source": "src",
   "output": "content",
+  "assets": "assets",
   "extension": "html",
   "block": {
     "convert": true,
@@ -8,5 +9,6 @@
   },
   "server": {
     "port": 3000
-  }
+  },
+  "logs": "detailed"
 }
