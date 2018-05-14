@@ -5,6 +5,7 @@
 const chalk = require('chalk');
 const figlet = require('figlet');
 
+// eslint-disable-next-line
 const logs = [
     {name: 'info', message: [chalk.blue('info')]},
     {name: 'success', message: ['🎉', chalk.green('success')]},
@@ -12,6 +13,7 @@ const logs = [
 ];
 
 const log = (...args) => {
+    // eslint-disable-next-line
     console.log(...args);
 };
 

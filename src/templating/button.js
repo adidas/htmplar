@@ -3,6 +3,7 @@
  **/
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
     const {href, children, id} = props;
@@ -20,7 +21,7 @@ const Button = (props) => {
         }
     });
 
-    return (<table className="button">
+    return (<table className="button" id={id}>
         <tr>
             {
                 icon && icon.index === 0 ?
@@ -37,6 +38,12 @@ const Button = (props) => {
             }
         </tr>
     </table>);
+};
+
+Button.propTypes = {
+    href: PropTypes.string.isRequired,
+    children: PropTypes.array,
+    id: PropTypes.string
 };
 
 export default Button;

@@ -25,7 +25,7 @@ else {
             break;
         case 'dev':
             info('Development server starting');
-            watch();
+            watch(options);
             info(`Server started. You can view your files at http://localhost:${server.port}`);
             break;
         case 'serve':

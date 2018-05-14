@@ -10,9 +10,9 @@
     "@babel/cli": "^7.0.0-beta.46"
   },
   "scripts": {
-    "dev": "nodemon",
-    "build": "node src/build",
-    "lib": "babel src/templating --out-dir lib"
+    "build:lib": "babel src/templating --out-dir lib",
+    "lint": "eslint src/**/*.js --fix",
+    "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build:lib'"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
@@ -22,12 +22,15 @@
     "chalk": "^2.4.1",
     "clui": "^0.3.6",
     "configstore": "^3.1.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
     "express": "^4.16.3",
     "figlet": "^1.2.0",
     "minimist": "^1.2.0",
     "module": "^1.2.5",
     "nodemon": "^1.17.4",
     "pretty": "^2.0.0",
+    "prop-types": "^15.6.1",
     "rc": "^1.2.7",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
