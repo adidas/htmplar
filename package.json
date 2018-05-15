@@ -22,7 +22,7 @@
     "chalk": "^2.4.1",
     "clui": "^0.3.6",
     "configstore": "^3.1.2",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0-alpha.3",
     "eslint-plugin-react": "^7.8.2",
     "express": "^4.16.3",
     "figlet": "^1.2.0",

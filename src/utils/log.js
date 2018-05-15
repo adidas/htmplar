@@ -29,6 +29,10 @@ const error = (...message) => {
     log(chalk.red('error'), ...message);
 };
 
+const warn = (...message) => {
+    log(chalk.yellow('notice'), ...message);
+};
+
 const welcome = () => {
     log(
         chalk.yellow(
@@ -39,7 +43,9 @@ const welcome = () => {
 
 module.exports = {
     welcome,
+    log,
     info,
     success,
-    error
+    error,
+    warn
 };

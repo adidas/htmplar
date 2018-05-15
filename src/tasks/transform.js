@@ -1,8 +1,8 @@
-const Module = require("module");
-require("@babel/register")({
+const Module = require('module');
+require('@babel/register')({
     presets: [
-        "@babel/preset-env",
-        "@babel/preset-react"
+        '@babel/preset-env',
+        '@babel/preset-react'
     ]
 });
 const vm = require('vm');
@@ -11,7 +11,7 @@ const pretty = require('pretty');
 const path = require('path');
 
 const _eval = function (file) {
-    if (!file) return undefined;
+    if (!file) {return undefined;}
 
     let stream = [
         "import React from 'react';",
@@ -20,18 +20,18 @@ const _eval = function (file) {
 
     if (file.includes('/block-')) {
         stream.push("import {contentBlock} from 'htmplar';");
-        stream.push("contentBlock(Component);")
+        stream.push('contentBlock(Component);');
     }
     else {
         stream.push("import {template} from 'htmplar';");
-        stream.push("template()(Component);");
+        stream.push('template()(Component);');
     }
 
     let code = babel.transform(stream.join('\n'), {
         filename: file,
         presets: [
-            "@babel/preset-env",
-            "@babel/preset-react"
+            '@babel/preset-env',
+            '@babel/preset-react'
         ]
     }).code;
 

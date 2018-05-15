@@ -6,7 +6,7 @@ const defaultCfg = require('../../.htmplarrc.json');
 const {logs} = require('rc')('htmplar', defaultCfg);
 const path = require('path');
 const fs = require('fs');
-const {info, error} = require('../cli/log');
+const {info, error} = require('./log');
 
 const createPath = dir => {
     let folders = dir.split(path.sep);

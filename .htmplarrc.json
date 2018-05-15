@@ -10,5 +10,11 @@
   "server": {
     "port": 3000
   },
-  "logs": "detailed"
+  "logs": "detailed",
+  "linting": [
+    true,
+    {
+      "exitOnError": true
+    }
+  ]
 }

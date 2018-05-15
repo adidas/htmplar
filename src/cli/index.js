@@ -3,13 +3,12 @@
 /* cli */
 
 const defaultCfg = require('../../.htmplarrc.json');
-const {server} = require('rc')('htmplar', defaultCfg);
+const {server, linting, source} = require('rc')('htmplar', defaultCfg);
 const [, , ...args] = process.argv;
-const {welcome, info, success} = require('./log');
+const {welcome, info, success} = require('../utils/log');
 
-const build = require('../build');
+const {build, watch, lint} = require('../tasks');
 const app = require('../server');
-const watch = require('../server/watch');
 
 if (!args.length) {
     welcome();
@@ -25,13 +24,17 @@ else {
             break;
         case 'dev':
             info('Development server starting');
-            watch(options);
+            watch(linting, options);
             info(`Server started. You can view your files at http://localhost:${server.port}`);
             break;
         case 'serve':
             info('Server starting');
             app.start();
             info(`Server started. You can view your files at http://localhost:${server.port}`);
+            break;
+        case 'lint':
+            info('Linting starting');
+            lint(source, options);
             break;
     }
 }
