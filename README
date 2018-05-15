@@ -13,10 +13,21 @@ Benefits:
 ```
 npm install htmplar --save
 ```
-
+or
 ```
 yarn add htmplar
 ```
+
+Then in your **package.json**, add the following
+
+``` 
+"scripts" : {
+    "serve": "htmplar serve",
+    "develop": "htmpler dev"
+}
+```
+
+All set, you can start to develop your emails by running `npm run develop` or `yarn run develop`
 
 ## Configuration
 You can extend default configuration by creating a `htmplar` config file (`.htmplarrc`, `.htmplar.json`).
@@ -44,3 +55,5 @@ You can extend default configuration by creating a `htmplar` config file (`.htmp
 | exclude | `[]` | Array of folder or file paths inside of your `source` folder. The matched files will be excluded from convertion.
 | blocks | `{}` | An object for block definitions. Normally _htmplar_ converts all matched components to HTML. You can define a prefix and convert option. Then, _htmplar_ will look for, file names with a defined _prefix_ and convert these blocks along with the other components. The difference between normal conversion and block conversion is, block only converts the HTML of that component where normal convert, adds also _DOCTYPE_, _html_, _head_ and _body_ tags
 | server | `{}` | An object for development server options like server port, assets path etc.
+| logs   | `detailed` | The amount of logging visible in the CLI output. `detailed` will display logs for each file converted. `summary` will display only command starting and endings, `none` will display nothing.
+| linting| `true` | Linting of the JS code with the help of the ESLint. You can create an `.eslintrc` file to define/overwrite defaults. 
