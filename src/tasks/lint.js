@@ -4,7 +4,7 @@
 
 const CLIEngine = require('eslint').CLIEngine;
 const defaultLinting = require('../../lib/eslint-defaults');
-const {log, warn, info} = require('../utils/log');
+const {logger: {log, warn, info}} = require('../utils');
 
 const lint = (source, cliOptions) => {
     const options = {

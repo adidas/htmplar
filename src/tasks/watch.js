@@ -2,11 +2,9 @@
  * watch
  **/
 
-const defaultCfg = require('../../.htmplarrc.json');
-const {output, source} = require('rc')('htmplar', defaultCfg);
 const nodemon = require('nodemon');
 const path = require('path');
-const {createCliArgs} = require('../utils');
+const {config: {output, source}, createCliArgs} = require('../utils');
 
 const watch = (linting) => {
     let exec = [

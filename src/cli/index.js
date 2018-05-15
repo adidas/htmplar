@@ -2,8 +2,7 @@
 
 /* cli */
 
-const defaultCfg = require('../../.htmplarrc.json');
-const {server, linting, source} = require('rc')('htmplar', defaultCfg);
+const {config: {server, linting, source}} = require('../utils');
 const [, , ...args] = process.argv;
 const {welcome, info, success} = require('../utils/log');
 

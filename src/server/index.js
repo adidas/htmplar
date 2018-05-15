@@ -2,8 +2,7 @@
  * index
  **/
 
-const defaultCfg = require('../../.htmplarrc.json');
-const {output, assets, server} = require('rc')('htmplar', defaultCfg);
+const {config: {output, assets, server}} = require('../utils');
 const path = require('path');
 const express = require('express');
 //const page = require('./page');
