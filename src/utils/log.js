@@ -2,6 +2,7 @@
  * log
  **/
 
+const {logs: showLogs} = require('./config');
 const chalk = require('chalk');
 const figlet = require('figlet');
 
@@ -13,6 +14,9 @@ const logs = [
 ];
 
 const log = (...args) => {
+    if(showLogs === 'none') {
+        return;
+    }
     // eslint-disable-next-line
     console.log(...args);
 };

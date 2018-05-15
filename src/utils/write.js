@@ -2,8 +2,7 @@
  * write
  **/
 
-const defaultCfg = require('../../.htmplarrc.json');
-const {logs} = require('rc')('htmplar', defaultCfg);
+const {config:logs} = require('./config');
 const path = require('path');
 const fs = require('fs');
 const {info, error} = require('./log');
