@@ -22,6 +22,8 @@ table {
     border-collapse: collapse;
     mso-table-lspace: 0;
     mso-table-rspace: 0;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,19 +94,18 @@ a[x-apple-data-detectors] {
     width: 100%;
 }
 
-.htmplar-block {
-    min-width: 100%;
-    border-collapse: collapse;
-    mso-table-lspace: 0;
-    mso-table-rspace: 0;
+.htmplar-cell {
+    mso-line-height-rule: exactly;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
 
+.htmplar-block {
+    min-width: 100%;
+}
+
 .htmplar-block-inner {
-    mso-line-height-rule: exactly;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+
 }
 
 .htmplar-button {
@@ -112,7 +113,7 @@ a[x-apple-data-detectors] {
 }
 
 .htmplar-button-container {
-
+    padding: 0;
 }
 
 .htmplar-button-inner {
@@ -125,16 +126,22 @@ a[x-apple-data-detectors] {
 
 .htmplar-button-cta {
     display: block;
+    text-align: center;
 }
 
 .htmplar-button-text,
 .htmplar-button-icon {
     display: inline-block;
     text-decoration: none;
+    vertical-align: middle;
+    mso-line-height-rule: exactly;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 .htmplar-button-text {
-
+    letter-spacing: normal;
+    line-height: 100%;
 }
 
 .htmplar-button-icon {

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Button = (props) => {
-    const {href, children, id, isBlock} = props;
+    const {href, children, id, isBlock, className} = props;
     let text, icon = null;
 
     children.forEach((child, index) => {
@@ -23,14 +23,14 @@ const Button = (props) => {
     });
 
     return (
-        <table className="htmplar-button" id={id}>
+        <table className={classNames('htmplar-button', className)} id={id}>
             <tr>
-                <td className="htmplar-button-container">
+                <td className="htmplar-button-container htmplar-cell">
                     <table className={classNames('htmplar-button-inner', {
                         'htmplar-button-block': isBlock
                     })}>
                         <tr>
-                            <td className="htmplar-button-content">
+                            <td className="htmplar-button-content htmplar-cell">
                                 <a href={href} className="htmplar-button-cta">
                                     {icon && icon.index === 0 ?
                                         <span className="htmplar-button-icon">{icon.component}</span>
@@ -55,7 +55,8 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
-    isBlock: false
+    isBlock: false,
+    className: false
 };
 
 Button.propTypes = {

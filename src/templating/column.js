@@ -10,7 +10,7 @@ const Column = props => {
     return (
         <td
             valign="top"
-            className="htmplar-block-inner"
+            className="htmplar-block-inner htmplar cell"
         >
             {children}
         </td>
