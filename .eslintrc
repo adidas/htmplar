@@ -29,6 +29,7 @@
       }
     ],
     "semi": "error",
-    "space-before-blocks": "error"
+    "space-before-blocks": "error",
+    "no-console": "warn"
   }
 }

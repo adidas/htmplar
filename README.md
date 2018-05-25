@@ -2,7 +2,7 @@
 
 Templar
 ==========
-Templar is a React to HTML converter. It is primarily created for developer friendly e-mail template creation. By leveraging the component structure with React, it composes a reusable and maintainable pipeline for the projects.
+Templar is a React to HTML converter. It is created for developer friendly e-mail template development. By leveraging the component structure with React, it composes a reusable and maintainable pipeline for the projects.
 
 Benefits:
 * Allow themable components with the help of React-JSS & Styled Components
@@ -20,10 +20,10 @@ yarn add htmplar
 
 Then in your **package.json**, add the following
 
-``` 
+``` json
 "scripts" : {
     "serve": "htmplar serve",
-    "develop": "htmpler dev"
+    "develop": "htmplar dev"
 }
 ```
 
@@ -31,18 +31,26 @@ All set, you can start to develop your emails by running `npm run develop` or `y
 
 ## Configuration
 You can extend default configuration by creating a `htmplar` config file (`.htmplarrc`, `.htmplar.json`).
-```
+``` json
 {
   "source": "src",
   "output": "content",
+  "assets": "assets",
   "extension": "html",
-  "blocks": {
+  "block": {
     "convert": true,
     "prefix": "block-"
   },
   "server": {
     "port": 3000
-  }
+  },
+  "logs": "detailed",
+  "linting": [
+    true,
+    {
+      "exitOnError": true
+    }
+  ]
 }
 ```
 

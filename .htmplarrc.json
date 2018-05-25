@@ -16,5 +16,6 @@
     {
       "exitOnError": true
     }
-  ]
+  ],
+  "defaultCss": false
 }

@@ -2,10 +2,11 @@
  * write
  **/
 
-const {config:logs} = require('./config');
+const {logs, block} = require('./config');
 const path = require('path');
 const fs = require('fs');
 const {info, error} = require('./log');
+const inlineCSS = require('inline-css');
 
 const createPath = dir => {
     let folders = dir.split(path.sep);
@@ -19,10 +20,20 @@ const createPath = dir => {
     }, '');
 };
 
-const store = (content, options) => {
+const store = async (content, options) => {
     createPath(options.dir);
+    const savePath = path.join(options.dir, options.name);
+    let inline = '';
 
-    fs.writeFile(path.join(options.dir, options.name), content, err => {
+    if (savePath.includes(block.prefix)) {
+        inline = await inlineCSS(content, {url: '/'});
+    }
+
+    else {
+        inline = await inlineCSS(content, {url: '/', removeStyleTags: false});
+    }
+
+    fs.writeFile(savePath, inline, err => {
         if (err) {
             error(err);
         }

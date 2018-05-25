@@ -19,12 +19,12 @@ const _eval = function (file) {
     ];
 
     if (file.includes('/block-')) {
-        stream.push("import {contentBlock} from 'htmplar';");
-        stream.push('contentBlock(Component);');
+        stream.push("import {contentBlock, getBaseStyles} from 'htmplar';");
+        stream.push('contentBlock(getBaseStyles)(Component);');
     }
     else {
-        stream.push("import {template} from 'htmplar';");
-        stream.push('template()(Component);');
+        stream.push("import {template, getBaseStyles} from 'htmplar';");
+        stream.push('template(getBaseStyles)(Component);');
     }
 
     let code = babel.transform(stream.join('\n'), {
