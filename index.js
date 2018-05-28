@@ -8,6 +8,8 @@ const Block = require('./lib/block');
 const Row = require('./lib/row');
 const Column = require('./lib/column');
 const Image = require('./lib/image');
+const Menu = require('./lib/menu');
+const Link = require('./lib/link');
 const {getBaseStyles} = require('./lib/utils');
 
 module.exports = {
@@ -18,5 +20,7 @@ module.exports = {
     Row: Row.default,
     Column: Column.default,
     Image: Image.default,
+    Menu: Menu.default,
+    Link: Link.default,
     getBaseStyles: getBaseStyles
 };

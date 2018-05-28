@@ -4,15 +4,17 @@
 
 import React from 'react';
 import Column from './column';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Row = props => {
-    const {columns, children} = props;
+    const {columns, children, className} = props;
     let cells = columns || children;
 
     cells = Array.isArray(cells) ? cells : [cells];
 
     return (
-        <tr>
+        <tr className={classNames('htmplar-row', className)}>
             {cells.map((cell, index) => {
                 return (
                     <Column key={index}>
@@ -22,6 +24,21 @@ const Row = props => {
             })}
         </tr>
     );
+};
+
+Row.propTypes = {
+    columns: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ]),
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ]),
+    className: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ])
 };
 
 export default Row;
