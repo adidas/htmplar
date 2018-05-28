@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Image = (props) => {
-    const {src, align, className} = props;
+    const {src, align, className, title} = props;
     return (
-        <img align={align} src={src} className={classNames('htmplar-image', className)}/>
+        <img align={align} src={src} alt={title} className={classNames('htmplar-image', className)}/>
     );
 };
 
@@ -19,6 +19,7 @@ Image.defaultProps = {
 
 Image.propTypes = {
     src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     align: PropTypes.string,
     className: PropTypes.oneOfType([
         PropTypes.string,

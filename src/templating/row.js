@@ -29,11 +29,17 @@ const Row = props => {
 Row.propTypes = {
     columns: PropTypes.oneOfType([
         PropTypes.object,
-        PropTypes.array
+        PropTypes.func,
+        PropTypes.symbol,
+        PropTypes.array,
+        PropTypes.string
     ]),
     children: PropTypes.oneOfType([
         PropTypes.object,
-        PropTypes.array
+        PropTypes.func,
+        PropTypes.symbol,
+        PropTypes.array,
+        PropTypes.string
     ]),
     className: PropTypes.oneOfType([
         PropTypes.string,

@@ -21,7 +21,10 @@ const Column = props => {
 Column.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.object,
-        PropTypes.array
+        PropTypes.symbol,
+        PropTypes.func,
+        PropTypes.array,
+        PropTypes.string
     ]).isRequired,
 };
 

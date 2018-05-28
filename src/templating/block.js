@@ -26,7 +26,10 @@ const Block = (props) => {
 Block.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.object,
-        PropTypes.array
+        PropTypes.func,
+        PropTypes.symbol,
+        PropTypes.array,
+        PropTypes.string
     ]).isRequired,
     className: PropTypes.oneOfType([
         PropTypes.string,

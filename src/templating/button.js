@@ -8,9 +8,13 @@ import classNames from 'classnames';
 
 const Button = (props) => {
     const {href, children, id, isBlock, className} = props;
-    let text, icon = null;
+    let items = children, text, icon = null;
 
-    children.forEach((child, index) => {
+    if (typeof children === 'string') {
+        items = [items];
+    }
+
+    items.forEach((child, index) => {
         if (typeof child === 'string') {
             text = child;
         }
@@ -55,15 +59,22 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
-    isBlock: false,
-    className: false
+    href: '#',
+    isBlock: false
 };
 
 Button.propTypes = {
     href: PropTypes.string.isRequired,
-    children: PropTypes.array,
+    children: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.string
+    ]),
     id: PropTypes.string,
-    isBlock: PropTypes.bool
+    isBlock: PropTypes.bool,
+    className: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ])
 };
 
 export default Button;

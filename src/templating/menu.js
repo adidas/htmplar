@@ -19,7 +19,7 @@ const Menu = props => {
                             const {link, label, id} = item;
 
                             return (
-                                <Link key={index} href={link} id={id} label={label}/>
+                                <Link key={index} href={link} id={id} label={label} align="left"/>
                             );
                         })
                     }

@@ -23,7 +23,8 @@ const Link = props => {
 };
 
 Link.defaultProps = {
-    align: 'center'
+    align: 'center',
+    href: '#'
 };
 
 Link.propTypes = {
