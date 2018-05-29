@@ -12,13 +12,25 @@ const Block = (props) => {
 
     return (
         <table
-            className={classNames('htmplar-block', className)}
+            className={classNames('htmplar-block-outer', className)}
             border="0"
             cellPadding={0}
             cellSpacing={0}
             width="100%"
         >
-            <Row columns={children}/>
+            <tr className="htmplar-block-outer-row">
+                <td className="htmplar-block-container">
+                    <table
+                        className={classNames('htmplar-block', className)}
+                        border="0"
+                        cellPadding={0}
+                        cellSpacing={0}
+                        width="100%"
+                    >
+                        <Row columns={children}/>
+                    </table>
+                </td>
+            </tr>
         </table>
     );
 };

@@ -148,6 +148,10 @@ a[x-apple-data-detectors] {
 
 }
 
+.htmplar-all-caps {
+    text-transform: uppercase;
+}
+
 @media only screen and (max-width: 480px) {
     body, table, td, p, a, li, blockquote {
         -webkit-text-size-adjust: none !important;

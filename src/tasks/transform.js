@@ -11,19 +11,21 @@ const pretty = require('pretty');
 const path = require('path');
 
 const _eval = function (file) {
-    if (!file) {return undefined;}
+    if (!file) {
+        return undefined;
+    }
 
     let stream = [
-        "import React from 'react';",
-        "import Component from '" + path.join(process.cwd(), file) + "';"
+        'import React from \'react\';',
+        'import Component from \'' + path.join(process.cwd(), file) + '\';'
     ];
 
     if (file.includes('/block-')) {
-        stream.push("import {contentBlock, getBaseStyles} from 'htmplar';");
+        stream.push('import {contentBlock, getBaseStyles} from \'htmplar\';');
         stream.push('contentBlock(getBaseStyles)(Component);');
     }
     else {
-        stream.push("import {template, getBaseStyles} from 'htmplar';");
+        stream.push('import {template, getBaseStyles} from \'htmplar\';');
         stream.push('template(getBaseStyles)(Component);');
     }
 
