@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import Row from './row';
 
 const Block = (props) => {
-    const {children, className} = props;
+    const {children, className, align} = props;
 
     return (
         <table
@@ -25,7 +25,7 @@ const Block = (props) => {
                         border="0"
                         cellPadding={0}
                         cellSpacing={0}
-                        width="100%"
+                        align={align}
                     >
                         <Row columns={children}/>
                     </table>
@@ -33,6 +33,10 @@ const Block = (props) => {
             </tr>
         </table>
     );
+};
+
+Block.defaultProps = {
+    align: 'center'
 };
 
 Block.propTypes = {
@@ -46,7 +50,8 @@ Block.propTypes = {
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object
-    ])
+    ]),
+    align: PropTypes.string
 };
 
 export default Block;

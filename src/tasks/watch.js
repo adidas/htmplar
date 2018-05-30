@@ -4,9 +4,9 @@
 
 const nodemon = require('nodemon');
 const path = require('path');
-const {config: {output, source}, createCliArgs} = require('../utils');
+const {config: {output, source, assets}, createCliArgs} = require('../utils');
 
-const watch = (linting) => {
+const watch = linting => {
     let exec = [
         './node_modules/.bin/htmplar build',
         './node_modules/.bin/htmplar serve'
@@ -22,7 +22,8 @@ const watch = (linting) => {
 
     nodemon({
         exec: 'node ' + exec.join(' && '),
-        watch: [path.join(process.cwd(), source), path.join(process.cwd(), output)]
+        watch: [path.join(process.cwd(), source), path.join(process.cwd(), output), path.join(process.cwd(), assets)],
+        ext: 'js, jsx, mjs, json, css, scss'
     });
 };
 
