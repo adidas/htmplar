@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Button = (props) => {
-    const {href, children, id, isBlock, className} = props;
+    const {href, children, id, isBlock, className, allCaps} = props;
     let items = children, text, icon = null;
 
     if (typeof children === 'string') {
@@ -27,7 +27,9 @@ const Button = (props) => {
     });
 
     return (
-        <table className={classNames('htmplar-button', className)} id={id}>
+        <table className={classNames('htmplar-button', className, {
+            'htmplar-all-caps': allCaps
+        })} id={id}>
             <tr>
                 <td className="htmplar-button-container htmplar-cell">
                     <table className={classNames('htmplar-button-inner', {
@@ -60,7 +62,8 @@ const Button = (props) => {
 
 Button.defaultProps = {
     href: '#',
-    isBlock: false
+    isBlock: false,
+    allCaps: false
 };
 
 Button.propTypes = {
@@ -71,6 +74,7 @@ Button.propTypes = {
     ]),
     id: PropTypes.string,
     isBlock: PropTypes.bool,
+    allCaps: PropTypes.bool,
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object
