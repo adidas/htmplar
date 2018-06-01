@@ -12,6 +12,9 @@ const Menu = require('./lib/menu');
 const Link = require('./lib/link');
 const Text = require('./lib/text');
 const Line = require('./lib/line');
+const Headline = require('./lib/headline');
+const Heading = require('./lib/heading');
+const Caption = require('./lib/caption');
 const {getBaseStyles} = require('./lib/utils');
 
 module.exports = {
@@ -26,5 +29,8 @@ module.exports = {
     Link: Link.default,
     Text: Text.default,
     Line: Line.default,
+    Headline: Headline.default,
+    Heading: Heading.default,
+    Caption: Caption.default,
     getBaseStyles: getBaseStyles
 };
