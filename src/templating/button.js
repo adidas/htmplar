@@ -5,10 +5,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {setMedium} from './utils';
 
 const Button = (props) => {
-    const {href, children, id, isBlock, className, allCaps} = props;
+    const {href, children, id, isBlock, className, allCaps, medium} = props;
     let items = children, text, icon = null;
+
+    let availableIn = setMedium(medium);
 
     if (typeof children === 'string') {
         items = [items];
@@ -27,7 +30,7 @@ const Button = (props) => {
     });
 
     return (
-        <table className={classNames('htmplar-button', className, {
+        <table className={classNames('htmplar-button', className, availableIn, {
             'htmplar-all-caps': allCaps
         })} id={id}>
             <tr>
@@ -63,7 +66,8 @@ const Button = (props) => {
 Button.defaultProps = {
     href: '#',
     isBlock: false,
-    allCaps: false
+    allCaps: false,
+    medium: 'both'
 };
 
 Button.propTypes = {
@@ -73,6 +77,7 @@ Button.propTypes = {
         PropTypes.string
     ]),
     id: PropTypes.string,
+    medium: PropTypes.string,
     isBlock: PropTypes.bool,
     allCaps: PropTypes.bool,
     className: PropTypes.oneOfType([

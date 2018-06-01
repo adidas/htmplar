@@ -6,20 +6,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Row from './row';
+import {setMedium} from './utils';
 
-const Block = (props) => {
-    const {children, className, align} = props;
+const Block = props => {
+    const {children, className, align, valign, medium} = props;
+
+    const availableIn = setMedium(medium);
 
     return (
         <table
-            className={classNames('htmplar-block-outer', className)}
+            className={classNames('htmplar-block-outer', className, availableIn)}
             border="0"
             cellPadding={0}
             cellSpacing={0}
             width="100%"
         >
             <tr className="htmplar-block-outer-row">
-                <td className="htmplar-block-container">
+                <td className="htmplar-block-container" valign={valign}>
                     <table
                         className={classNames('htmplar-block', className)}
                         border="0"
@@ -27,7 +30,7 @@ const Block = (props) => {
                         cellSpacing={0}
                         align={align}
                     >
-                        <Row columns={children}/>
+                        <Row columns={children} valign={valign}/>
                     </table>
                 </td>
             </tr>
@@ -36,7 +39,9 @@ const Block = (props) => {
 };
 
 Block.defaultProps = {
-    align: 'center'
+    align: 'center',
+    valign: 'top',
+    medium: false
 };
 
 Block.propTypes = {
@@ -51,7 +56,12 @@ Block.propTypes = {
         PropTypes.string,
         PropTypes.object
     ]),
-    align: PropTypes.string
+    align: PropTypes.string,
+    valign: PropTypes.string,
+    medium: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ])
 };
 
 export default Block;

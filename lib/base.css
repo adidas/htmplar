@@ -156,7 +156,13 @@ a[x-apple-data-detectors] {
     text-transform: uppercase;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 48em) {
+    .htmplar-only-mobile {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 30em) {
     body, table, td, p, a, li, blockquote {
         -webkit-text-size-adjust: none !important;
     }
@@ -164,5 +170,9 @@ a[x-apple-data-detectors] {
     body {
         width: 100% !important;
         min-width: 100% !important;
+    }
+
+    .htmplar-only-desktop {
+        display: none !important;
     }
 }

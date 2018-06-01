@@ -27,6 +27,26 @@ const getBaseStyles = () => {
     };
 };
 
+const setMedium = medium => {
+    let className = '';
+
+    switch (medium) {
+        case 'mobile':
+            className = 'htmplar-only-mobile';
+            break;
+        case 'desktop':
+            className = 'htmplar-only-desktop';
+            break;
+        case 'both':
+        default:
+            className = '';
+            break;
+    }
+
+    return className;
+};
+
 export {
-    getBaseStyles
+    getBaseStyles,
+    setMedium
 };

@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const Row = props => {
-    const {columns, children, className} = props;
+    const {columns, children, className, valign} = props;
     let cells = columns || children;
 
     cells = Array.isArray(cells) ? cells : [cells];
@@ -17,13 +17,17 @@ const Row = props => {
         <tr className={classNames('htmplar-row', className)}>
             {cells.map((cell, index) => {
                 return (
-                    <Column key={index}>
+                    <Column key={index} valign={valign}>
                         {cell}
                     </Column>
                 );
             })}
         </tr>
     );
+};
+
+Row.defaultProps = {
+    valign: 'top'
 };
 
 Row.propTypes = {
@@ -44,7 +48,8 @@ Row.propTypes = {
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object
-    ])
+    ]),
+    valign: PropTypes.string
 };
 
 export default Row;

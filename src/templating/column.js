@@ -6,16 +6,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Column = props => {
-    const {children} = props;
+    const {children, valign} = props;
 
     return (
         <td
-            valign="top"
+            valign={valign}
             className="htmplar-block-inner htmplar-cell"
         >
             {children}
         </td>
     );
+};
+
+Column.defaultProps = {
+    valign: 'top'
 };
 
 Column.propTypes = {
@@ -26,6 +30,7 @@ Column.propTypes = {
         PropTypes.array,
         PropTypes.string
     ]).isRequired,
+    valign: PropTypes.string
 };
 
 export default Column;

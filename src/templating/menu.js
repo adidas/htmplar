@@ -6,20 +6,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from './link';
+import {setMedium} from './utils';
 
 const Menu = props => {
-    const {items, className, align} = props;
+    const {items, className, align, medium} = props;
+
+    const availableIn = setMedium(medium);
 
     return (
-        <table align={align} className={classNames('htmplar-menu', className)}>
+        <table align={align} className={classNames('htmplar-menu', className, availableIn)}>
             <tr>
-                <td>
+                <td className="htmplar-menu-container">
                     {
                         items.map((item, index) => {
-                            const {link, label, id} = item;
+                            const {link, label, id, medium} = item;
 
                             return (
-                                <Link key={index} href={link} id={id} label={label} align="left"/>
+                                <Link key={index} href={link} id={id} label={label} align="left" medium={medium}/>
                             );
                         })
                     }
@@ -30,12 +33,14 @@ const Menu = props => {
 };
 
 Menu.defaultProps = {
-    align: 'center'
+    align: 'center',
+    medium: 'both'
 };
 
 Menu.propTypes = {
     items: PropTypes.array.isRequired,
     align: PropTypes.string,
+    medium: PropTypes.string,
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object

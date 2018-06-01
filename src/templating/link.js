@@ -5,14 +5,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {setMedium} from './utils';
 
 const Link = props => {
-    const {href, label, id, className, align, children} = props;
+    const {href, label, id, className, align, children, medium} = props;
 
     const linkLabel = label || children;
 
+    const availableIn = setMedium(medium);
+
     return (
-        <table align={align} className={classNames('htmplar-link', className)}>
+        <table align={align} className={classNames('htmplar-link', className, availableIn)}>
             <tr>
                 <td>
                     <a href={href} id={id}>{linkLabel}</a>
@@ -24,7 +27,8 @@ const Link = props => {
 
 Link.defaultProps = {
     align: 'center',
-    href: '#'
+    href: '#',
+    medium: 'both'
 };
 
 Link.propTypes = {
@@ -34,6 +38,7 @@ Link.propTypes = {
         PropTypes.object
     ]),
     id: PropTypes.string.isRequired,
+    medium: PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.func,
