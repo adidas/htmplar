@@ -43,7 +43,8 @@ Menu.propTypes = {
     medium: PropTypes.string,
     className: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.object
+        PropTypes.object,
+        PropTypes.array
     ])
 };
 

@@ -54,7 +54,8 @@ Block.propTypes = {
     ]).isRequired,
     className: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.object
+        PropTypes.object,
+        PropTypes.array
     ]),
     align: PropTypes.string,
     valign: PropTypes.string,

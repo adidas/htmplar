@@ -11,6 +11,7 @@ const Image = require('./lib/image');
 const Menu = require('./lib/menu');
 const Link = require('./lib/link');
 const Text = require('./lib/text');
+const Line = require('./lib/line');
 const {getBaseStyles} = require('./lib/utils');
 
 module.exports = {
@@ -24,5 +25,6 @@ module.exports = {
     Menu: Menu.default,
     Link: Link.default,
     Text: Text.default,
+    Line: Line.default,
     getBaseStyles: getBaseStyles
 };

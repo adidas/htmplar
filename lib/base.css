@@ -156,6 +156,37 @@ a[x-apple-data-detectors] {
     text-transform: uppercase;
 }
 
+.htmplar-line-outer {
+    width: 100%;
+    text-align: center;
+}
+
+.htmplar-line-container {
+    padding: 10px 0;
+}
+
+.htmplar-line-inner {
+    width: 100%;
+}
+
+.htmplar-horizontal-rule {
+    margin: 0;
+    border: 0;
+    background-color: #ccc;
+}
+
+.htmplar-thin-line {
+    height: 1px;
+}
+
+.htmplar-medium-line {
+    height: 2px;
+}
+
+.htmplar-thick-line {
+    height: 4px;
+}
+
 @media only screen and (min-width: 48em) {
     .htmplar-only-mobile {
         display: none !important;
