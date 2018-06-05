@@ -14,7 +14,7 @@ const Text = props => {
     const availableIn = setMedium(medium);
 
     return (
-        <p id={id} className={classNames('htmplar-menu', className, availableIn)}>
+        <p id={id} className={classNames('htmplar-text', className, availableIn)}>
             {text}
         </p>
     );

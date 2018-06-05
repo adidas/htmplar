@@ -30,7 +30,7 @@ const Caption = props => {
     return (
         <table id={id} className={classNames('htmplar-caption', className, availableIn)}>
             <tr>
-                <td className={classNames('htmplar-caption-inner')} valign={valign}>>
+                <td className={classNames('htmplar-caption-inner')} valign={valign}>
                     <table align={imageAlign} className={classNames('htmplar-caption-image-block')}>
                         <tr>
                             <td className={classNames('htmplar-caption-image-container')} valign={valign}>
