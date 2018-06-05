@@ -9,7 +9,7 @@ import {setMedium} from './utils';
 import Image from './image';
 
 const Caption = props => {
-    const {className, children, medium, id, image, imagePlacement, title, valign} = props;
+    const {className, children, medium, id, image, imagePlacement, title, valign, align} = props;
 
     const availableIn = setMedium(medium);
     const imageAlign = imagePlacement || 'top';
@@ -28,7 +28,7 @@ const Caption = props => {
     }
 
     return (
-        <table id={id} className={classNames('htmplar-caption', className, availableIn)}>
+        <table id={id} className={classNames('htmplar-caption', className, availableIn)} align={align}>
             <tr>
                 <td className={classNames('htmplar-caption-inner')} valign={valign}>
                     <table align={imageAlign} className={classNames('htmplar-caption-image-block')}>
@@ -58,6 +58,7 @@ const Caption = props => {
 
 Caption.defaultProps = {
     imagePlacement: 'top',
+    align: 'left',
     valign: 'top'
 };
 
@@ -78,6 +79,7 @@ Caption.propTypes = {
     ]),
     image: PropTypes.string,
     imagePlacement: PropTypes.string,
+    align: PropTypes.string,
     valign: PropTypes.string
 };
 
