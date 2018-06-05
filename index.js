@@ -3,6 +3,7 @@
  **/
 
 const render = require('./lib/render');
+const Content = require('./lib/content');
 const Button = require('./lib/button');
 const Block = require('./lib/block');
 const Row = require('./lib/row');
@@ -20,6 +21,7 @@ const {getBaseStyles} = require('./lib/utils');
 module.exports = {
     contentBlock: render.contentBlock,
     template: render.template,
+    Content: Content.default,
     Button: Button.default,
     Block: Block.default,
     Row: Row.default,

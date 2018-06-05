@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 img,
 a img {
+    max-width: 100%;
     height: auto;
     border: 0;
     outline: none;
@@ -148,8 +149,17 @@ a[x-apple-data-detectors] {
     line-height: 100%;
 }
 
-.htmplar-button-icon {
+.htmplar-button-text + .htmplar-button-icon,
+.htmplar-button-icon + .htmplar-button-text {
+    margin-left: 20px;
+}
 
+.htmplar-button-icon {
+    vertical-align: top;
+}
+
+.htmplar-button-icon .htmplar-image {
+    vertical-align: middle;
 }
 
 .htmplar-all-caps {

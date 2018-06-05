@@ -26,7 +26,7 @@ const Link = props => {
 };
 
 Link.defaultProps = {
-    align: 'center',
+    align: 'left',
     href: '#',
     medium: 'both'
 };

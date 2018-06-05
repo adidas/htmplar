@@ -6,9 +6,16 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {ServerStyleSheet} from 'styled-components';
 
+const replaceAll = (str, target, replacement) => str.replace(new RegExp(target, 'g'), replacement);
+
 const render = Component => {
     const sheet = new ServerStyleSheet();
-    const renderedComponent = renderToStaticMarkup(sheet.collectStyles(<Component/>));
+    const renderedComponent =
+        replaceAll(
+            replaceAll(
+                renderToStaticMarkup(sheet.collectStyles(<Component/>))
+                , '&lt;!--', '<!--')
+            , '--&gt;', '-->');
     const renderedStyles = sheet.getStyleTags();
 
     return {
@@ -45,7 +52,7 @@ const templateHtml = (body, styles, baseStyles) => {
                 </xml>
                 <![endif]-->
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <meta name="viewport" content="width=device-width" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <style id="base-styles">
                     ${_styles.defaultStyles}
                 </style>
