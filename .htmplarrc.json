@@ -1,14 +1,15 @@
 {
   "source": "src",
   "output": "content",
-  "assets": "assets",
+  "sharedContent": "content/shared",
+  "assets": "email-components/assets",
   "extension": "html",
   "block": {
     "convert": true,
     "prefix": "block-"
   },
   "server": {
-    "port": 3000
+    "port": 8080
   },
   "logs": "detailed",
   "linting": [
