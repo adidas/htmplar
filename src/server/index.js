@@ -6,7 +6,7 @@
 const {config: {output, assets, server}} = require('../utils');
 const path = require('path');
 const express = require('express');
-const {pages} = require('./page');
+const pages = require('./page');
 
 const start = () => {
     const app = express();
@@ -16,16 +16,23 @@ const start = () => {
 
     app.get('/', (req, res) => {
         res.status(200).send(
-            '<link rel="stylesheet" type="text/css" href="styles/default.css">\n'+
             '<title>HTMplar</title>\n'+
-            '<div class="wrapper">\n'+
-                '<h1 class="title">My Email Templates</h1>\n'+
-                '<ul class="pages-list">' + pages.join("\n") + '</ul>'+
+            '<div style="background: #fff;font: 16px/1.25 AdiHaus, Helvetica, Arial, sans-serif;">' + 
+                '<div style="width: 100%;'+
+                'max-width: 640px !important;'+
+                'margin: auto;"'+
+                'class="htmplar-landing-page">\n'+
+                    '<h1 style="margin: 32px 16px;" class="htmplar-landing-page-title">My Email Templates</h1>\n'+
+                    '<ul style="list-style-type: none;'+
+                    'padding: 0;'+
+                    'margin: 0"'+
+                    'class="htmplar-landing-page-pages-list">' + pages.join("\n") + '</ul>'+
+                '</div>' +
             '</div>'
         );
     });
   
-    app.listen(server.port || 8080);
+    app.listen(server.port || 3000);
 };
 
 module.exports = {
