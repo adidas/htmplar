@@ -216,4 +216,14 @@ a[x-apple-data-detectors] {
     .htmplar-only-desktop {
         display: none !important;
     }
+
+    .htmplar-block,
+    .htmplar-button,
+    .htmplar-button-inner,
+    .htmplar-caption,
+    .htmplar-caption-image-block,
+    .htmplar-caption-text-block {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
 }
