@@ -15,7 +15,13 @@ const Link = props => {
     const availableIn = setMedium(medium);
 
     return (
-        <table align={align} className={classNames('htmplar-link', className, availableIn)}>
+        <table
+            align={align}
+            className={classNames('htmplar-link', className, availableIn)}
+            border="0"
+            cellPadding={0}
+            cellSpacing={0}
+        >
             <tr>
                 <td>
                     <a href={href} id={id}>{linkLabel}</a>

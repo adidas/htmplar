@@ -6,16 +6,30 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {ServerStyleSheet} from 'styled-components';
 
-const replaceAll = (str, target, replacement) => str.replace(new RegExp(target, 'g'), replacement);
+const replaceAll = (str, target, replacement) => {
+    if (Array.isArray(target) && typeof replacement === 'undefined') {
+        target.forEach(item => {
+            str = str.replace(new RegExp(item[0], 'g'), item[1]);
+        });
+    }
+    else {
+        str.replace(new RegExp(target, 'g'), replacement);
+    }
+
+    return str;
+};
 
 const render = Component => {
     const sheet = new ServerStyleSheet();
     const renderedComponent =
         replaceAll(
-            replaceAll(
-                renderToStaticMarkup(sheet.collectStyles(<Component/>))
-                , '&lt;!--', '<!--')
-            , '--&gt;', '-->');
+            renderToStaticMarkup(sheet.collectStyles(<Component/>)),
+            [
+                ['&lt;', '<'],
+                ['&gt;', '>'],
+                ['=&quot;([a-zA-Z0-9;:\\-.\\/\\(\\)]+)&quot;', '="$1"'],
+            ]
+        );
     const renderedStyles = sheet.getStyleTags();
 
     return {

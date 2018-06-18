@@ -14,19 +14,27 @@ const Menu = props => {
     const availableIn = setMedium(medium);
 
     return (
-        <table align={align} className={classNames('htmplar-menu', className, availableIn)}>
+        <table
+            align={align}
+            className={classNames('htmplar-menu', className, availableIn)}
+            border="0"
+            cellPadding={0}
+            cellSpacing={0}
+        >
             <tr>
-                <td className="htmplar-menu-container">
-                    {
-                        items.map((item, index) => {
-                            const {link, label, id, medium} = item;
+                {
+                    items.map((item, index) => {
+                        const {link, label, id, medium} = item;
 
-                            return (
-                                <Link key={index} href={link} id={id} label={label} align="left" medium={medium}/>
-                            );
-                        })
-                    }
-                </td>
+                        const itemAvailableIn = setMedium(medium);
+
+                        return (
+                            <td key={index} className={classNames('htmplar-menu-container', itemAvailableIn)}>
+                                <a href={link} id={id}>{label}</a>
+                            </td>
+                        );
+                    })
+                }
             </tr>
         </table>
     );

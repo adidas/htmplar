@@ -30,14 +30,35 @@ const Button = (props) => {
     });
 
     return (
-        <table className={classNames('htmplar-button', className, availableIn, {
-            'htmplar-all-caps': allCaps
-        })} id={id}>
+        <table
+            className={
+                classNames(
+                    'htmplar-button',
+                    className,
+                    availableIn,
+                    {
+                        'htmplar-all-caps': allCaps
+                    })
+            }
+            border="0"
+            cellPadding={0}
+            cellSpacing={0}
+            id={id}>
             <tr>
                 <td className="htmplar-button-container htmplar-cell">
-                    <table className={classNames('htmplar-button-inner', {
-                        'htmplar-button-block': isBlock
-                    })}>
+                    <table
+                        className={
+                            classNames(
+                                'htmplar-button-inner',
+                                {
+                                    'htmplar-button-block': isBlock
+                                }
+                            )
+                        }
+                        border="0"
+                        cellPadding={0}
+                        cellSpacing={0}
+                    >
                         <tr>
                             <td className="htmplar-button-content htmplar-cell">
                                 <a href={href} className="htmplar-button-cta">

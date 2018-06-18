@@ -23,6 +23,15 @@ const Block = props => {
         >
             <tr className="htmplar-block-outer-row">
                 <td className="htmplar-block-container" valign={valign}>
+                    {align === 'center' ?
+                        `
+                        <!--[if (gte mso 9)|(IE)]>
+                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="width:640px;">
+                                <tr>
+                                    <td align="center" valign="top" width="640" style="width:640px;">
+                        <![endif]-->` :
+                        ''
+                    }
                     <table
                         className={classNames('htmplar-block', className)}
                         border="0"
@@ -32,6 +41,16 @@ const Block = props => {
                     >
                         <Row columns={children} valign={valign}/>
                     </table>
+                    {align === 'center' ?
+                        `
+                        <!--[if mso]>
+                                </td>
+                            </tr>
+                        </table>
+                        <![endif]-->
+                        ` :
+                        ''
+                    }
                 </td>
             </tr>
         </table>

@@ -28,17 +28,36 @@ const Caption = props => {
     }
 
     return (
-        <table id={id} className={classNames('htmplar-caption', className, availableIn)} align={align}>
+        <table
+            id={id}
+            className={classNames('htmplar-caption', className, availableIn)}
+            align={align}
+            cellPadding={0}
+            cellSpacing={0}
+            border="0"
+        >
             <tr>
                 <td className={classNames('htmplar-caption-inner')} valign={valign}>
-                    <table align={imageAlign} className={classNames('htmplar-caption-image-block')}>
+                    <table
+                        align={imageAlign}
+                        className={classNames('htmplar-caption-image-block')}
+                        cellSpacing={0}
+                        cellPadding={0}
+                        border="0"
+                    >
                         <tr>
                             <td className={classNames('htmplar-caption-image-container')} valign={valign}>
                                 <Image src={image} title={title}/>
                             </td>
                         </tr>
                     </table>
-                    <table align={textAlign} className={classNames('htmplar-caption-text-block')}>
+                    <table
+                        align={textAlign}
+                        className={classNames('htmplar-caption-text-block')}
+                        cellPadding={0}
+                        cellSpacing={0}
+                        border="0"
+                    >
                         <tr>
                             <td className={classNames('htmplar-caption-content')} valign={valign}>
                                 {
