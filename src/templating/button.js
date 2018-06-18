@@ -37,7 +37,8 @@ const Button = (props) => {
                     className,
                     availableIn,
                     {
-                        'htmplar-all-caps': allCaps
+                        'htmplar-all-caps': allCaps,
+                        'htmplar-button-block': isBlock
                     })
             }
             border="0"
@@ -47,14 +48,7 @@ const Button = (props) => {
             <tr>
                 <td className="htmplar-button-container htmplar-cell">
                     <table
-                        className={
-                            classNames(
-                                'htmplar-button-inner',
-                                {
-                                    'htmplar-button-block': isBlock
-                                }
-                            )
-                        }
+                        className={classNames('htmplar-button-inner')}
                         border="0"
                         cellPadding={0}
                         cellSpacing={0}

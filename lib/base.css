@@ -117,6 +117,12 @@ a[x-apple-data-detectors] {
     border-collapse: separate;
 }
 
+.htmplar-button-block,
+.htmplar-button-block .htmplar-button-inner {
+    width: 100%;
+    max-width: 100%;
+}
+
 .htmplar-button-container {
     padding: 0;
 }

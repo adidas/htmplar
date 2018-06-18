@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import {setMedium} from './utils';
 
 const Link = props => {
-    const {href, label, id, className, align, children, medium} = props;
+    const {href, label, id, className, align, children, medium, allCaps} = props;
 
     const linkLabel = label || children;
 
@@ -17,7 +17,14 @@ const Link = props => {
     return (
         <table
             align={align}
-            className={classNames('htmplar-link', className, availableIn)}
+            className={
+                classNames(
+                    'htmplar-link', className, availableIn,
+                    {
+                        'htmplar-all-caps': allCaps
+                    }
+                )
+            }
             border="0"
             cellPadding={0}
             cellSpacing={0}
@@ -34,7 +41,8 @@ const Link = props => {
 Link.defaultProps = {
     align: 'left',
     href: '#',
-    medium: 'both'
+    medium: 'both',
+    allCaps: false
 };
 
 Link.propTypes = {
@@ -54,7 +62,8 @@ Link.propTypes = {
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object
-    ])
+    ]),
+    allCaps: PropTypes.bool
 };
 
 export default Link;
