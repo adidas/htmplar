@@ -103,6 +103,7 @@ Button.propTypes = {
     allCaps: PropTypes.bool,
     className: PropTypes.oneOfType([
         PropTypes.string,
+        PropTypes.array,
         PropTypes.object
     ])
 };

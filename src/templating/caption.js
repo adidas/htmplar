@@ -96,7 +96,10 @@ Caption.propTypes = {
         PropTypes.array,
         PropTypes.string
     ]),
-    image: PropTypes.string,
+    image: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
     imagePlacement: PropTypes.string,
     align: PropTypes.string,
     valign: PropTypes.string

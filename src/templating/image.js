@@ -11,9 +11,19 @@ const Image = (props) => {
     const {src, align, className, title, medium} = props;
 
     let availableIn = setMedium(medium);
+    let imageSize = typeof src === 'object' ? '' : 'htmplar-image-all';
 
     return (
-        <img align={align} src={src} alt={title} className={classNames('htmplar-image', className, availableIn)}/>
+        typeof src === 'object' ?
+            Object.keys(src).map(type => {
+                const url = src[type];
+                return (
+                    <img key={type} align={align} src={url} alt={title}
+                         className={classNames('htmplar-image', className, 'htmplar-image-' + type)}/>
+                );
+            }) :
+            <img align={align} src={src} alt={title}
+                 className={classNames('htmplar-image', className, imageSize, availableIn)}/>
     );
 };
 
@@ -23,7 +33,10 @@ Image.defaultProps = {
 };
 
 Image.propTypes = {
-    src: PropTypes.string.isRequired,
+    src: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]).isRequired,
     title: PropTypes.string.isRequired,
     align: PropTypes.string,
     medium: PropTypes.string,

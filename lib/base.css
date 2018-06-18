@@ -197,8 +197,13 @@ a[x-apple-data-detectors] {
     height: 4px;
 }
 
+.htmplar-image-mobile {
+    display: none;
+}
+
 @media only screen and (min-width: 48em) {
-    .htmplar-only-mobile {
+    .htmplar-only-mobile,
+    .htmplar-image-mobile {
         display: none !important;
     }
 }
@@ -213,7 +218,12 @@ a[x-apple-data-detectors] {
         min-width: 100% !important;
     }
 
-    .htmplar-only-desktop {
+    .htmplar-image-mobile {
+        display: block !important;
+    }
+
+    .htmplar-only-desktop,
+    .htmplar-image-desktop {
         display: none !important;
     }
 
