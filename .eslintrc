@@ -1,35 +1,6 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "node": true
-  },
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
-  "rules": {
-    "curly": "error",
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
-    "global-require": "error",
-    "quotes": [
-      "error",
-      "single",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
-    ],
-    "semi": "error",
-    "space-before-blocks": "error",
-    "no-console": "warn"
-  }
+    "@pea/eslint-config-env/node",
+    "@pea/eslint-config-es6"
+  ]
 }

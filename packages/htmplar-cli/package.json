@@ -1,0 +1,36 @@
+{
+  "name": "htmplar-cli",
+  "version": "1.0.0",
+  "description": "Templar command line",
+  "license": "MIT",
+  "repository": "https://tools.adidas-group.com/bitbucket/projects/CEA/repos/htmplar/browse/packages/htmplar-cli",
+  "keywords": [
+    "react",
+    "es6",
+    "email",
+    "template",
+    "cli"
+  ],
+  "author": "Bilal Çınarlı <bcinarli@gmail.com>",
+  "scripts": {
+    "build:lib": "babel src/templating --out-dir lib",
+    "lint": "eslint src/**/*.js --fix",
+    "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build:lib'"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5.x",
+    "yarn": ">= 1.5.0"
+  },
+  "bin": {
+    "htmplar": "./bin/htmplar.js"
+  },
+  "dependencies": {
+    "commander": "^2.15.1"
+  },
+  "devDependencies": {
+    "@pea/eslint-config-env": "^1.1.1",
+    "@pea/eslint-config-es6": "^1.1.1",
+    "eslint": "^4.19.1"
+  }
+}

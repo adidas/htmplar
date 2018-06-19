@@ -1,46 +1,26 @@
 {
   "name": "htmplar",
-  "version": "0.0.1",
-  "description": "Developer friendly email development with React",
-  "main": "index.js",
-  "repository": "https://cinarbil@tools.adidas-group.com/bitbucket/scm/cea/htmplar.git",
-  "author": "Bilal Çınarlı <bcinarli@gmail.com>",
+  "private": true,
   "license": "MIT",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.46"
-  },
   "scripts": {
-    "build:lib": "babel src/templating --out-dir lib",
-    "lint": "eslint src/**/*.js --fix",
-    "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build:lib'"
+    "build": "",
+    "lint": "",
+    "precommit": "",
+    "test": ""
   },
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/preset-env": "^7.0.0-beta.46",
-    "@babel/preset-react": "^7.0.0-beta.46",
-    "@babel/register": "^7.0.0-beta.46",
-    "chalk": "^2.4.1",
-    "classnames": "^2.2.5",
-    "clui": "^0.3.6",
-    "configstore": "^3.1.2",
-    "eslint": "^5.0.0-alpha.3",
-    "eslint-plugin-react": "^7.8.2",
-    "express": "^4.16.3",
-    "figlet": "^1.2.0",
-    "inline-css": "^2.4.0",
-    "minimist": "^1.2.0",
-    "module": "^1.2.5",
-    "nodemon": "^1.17.4",
-    "pretty": "^2.0.0",
-    "prop-types": "^15.6.1",
-    "rc": "^1.2.7",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "styled-components": "^3.2.6",
-    "vm": "^0.1.0"
+  "devDependencies": {
+    "@pea/eslint-config-env": "^1.1.1",
+    "@pea/eslint-config-es5": "^1.1.1",
+    "@pea/eslint-config-es6": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-promise": "^3.8.0",
+    "lerna": "^2.11.0",
+    "lerna-changelog": "^0.7.0"
   },
-  "preferGlobal": true,
-  "bin": {
-    "htmplar": "./src/cli/index.js"
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5.x",
+    "yarn": ">= 1.5.0"
   }
 }
