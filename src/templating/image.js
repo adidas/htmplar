@@ -18,8 +18,10 @@ const Image = (props) => {
             Object.keys(src).map(type => {
                 const url = src[type];
                 return (
-                    <img key={type} align={align} src={url} alt={title}
+                    <span key={type} className={classNames('htmplar-image-container', className, 'htmplar-image-container-' + type)}>
+                        <img align={align} src={url} alt={title}
                          className={classNames('htmplar-image', className, 'htmplar-image-' + type)}/>
+                    </span>
                 );
             }) :
             <img align={align} src={src} alt={title}

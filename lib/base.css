@@ -141,7 +141,8 @@ a[x-apple-data-detectors] {
 }
 
 .htmplar-button-text,
-.htmplar-button-icon {
+.htmplar-button-icon,
+.htmplar-button-spacer {
     display: inline-block;
     text-decoration: none;
     vertical-align: middle;
@@ -157,7 +158,7 @@ a[x-apple-data-detectors] {
 
 .htmplar-button-text + .htmplar-button-icon,
 .htmplar-button-icon + .htmplar-button-text {
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .htmplar-button-icon {
@@ -201,6 +202,10 @@ a[x-apple-data-detectors] {
 
 .htmplar-thick-line {
     height: 4px;
+}
+
+.htmplar-image-container-mobile {
+    mso-hide: all;
 }
 
 .htmplar-image-mobile {

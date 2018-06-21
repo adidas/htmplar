@@ -57,7 +57,10 @@ const Button = (props) => {
                             <td className="htmplar-button-content htmplar-cell">
                                 <a href={href} className="htmplar-button-cta">
                                     {icon && icon.index === 0 ?
-                                        <span className="htmplar-button-icon">{icon.component}</span>
+                                        <>
+                                            <span className="htmplar-button-icon">{icon.component}</span>
+                                            <span className="htmplar-button-spacer">&nbsp;</span>
+                                        </>
                                         : ''
                                     }
                                     <span className="htmplar-button-text">
@@ -65,7 +68,10 @@ const Button = (props) => {
                                     </span>
                                     {
                                         icon && icon.index === 1 ?
-                                            <span className="htmplar-button-icon">{icon.component}</span>
+                                            <>
+                                                <span className="htmplar-button-spacer">&nbsp;</span>
+                                                <span className="htmplar-button-icon">{icon.component}</span>
+                                            </>
                                             : ''
                                     }
                                 </a>
