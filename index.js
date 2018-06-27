@@ -16,6 +16,7 @@ const Line = require('./lib/line');
 const Headline = require('./lib/headline');
 const Heading = require('./lib/heading');
 const Caption = require('./lib/caption');
+const HideMSO = require('./lib/hidemso');
 const {getBaseStyles} = require('./lib/utils');
 
 module.exports = {
@@ -34,5 +35,6 @@ module.exports = {
     Headline: Headline.default,
     Heading: Heading.default,
     Caption: Caption.default,
+    HideMSO: HideMSO.default,
     getBaseStyles: getBaseStyles
 };

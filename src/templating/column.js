@@ -4,14 +4,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Column = props => {
-    const {children, valign} = props;
+    const {children, valign, cellClasses, className} = props;
 
     return (
         <td
             valign={valign}
-            className="htmplar-block-inner htmplar-cell"
+            className={classNames('htmplar-block-inner htmplar-cell', cellClasses, className)}
         >
             {children}
         </td>
@@ -19,7 +20,9 @@ const Column = props => {
 };
 
 Column.defaultProps = {
-    valign: 'top'
+    valign: 'top',
+    cellClasses: '',
+    className: ''
 };
 
 Column.propTypes = {
@@ -30,6 +33,16 @@ Column.propTypes = {
         PropTypes.array,
         PropTypes.string
     ]).isRequired,
+    cellClasses: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object,
+        PropTypes.array
+    ]),
+    className: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object,
+        PropTypes.array
+    ]),
     valign: PropTypes.string
 };
 

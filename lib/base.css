@@ -137,7 +137,6 @@ a[x-apple-data-detectors] {
 
 .htmplar-button-cta {
     display: block;
-    text-align: center;
 }
 
 .htmplar-button-text,
@@ -169,7 +168,12 @@ a[x-apple-data-detectors] {
     vertical-align: middle;
 }
 
-.htmplar-all-caps {
+.htmplar-all-caps,
+.htmplar-all-caps .htmplar-button-text,
+.htmplar-all-caps .htmplar-caption-title,
+.htmplar-all-caps .htmplar-heading,
+.htmplar-all-caps .htmplar-headline,
+.htmplar-all-caps a {
     text-transform: uppercase;
 }
 
@@ -204,12 +208,11 @@ a[x-apple-data-detectors] {
     height: 4px;
 }
 
+.htmplar-only-mobile,
+.htmplar-image-mobile,
+.htmplar-hide-in-mso,
 .htmplar-image-container-mobile {
     mso-hide: all;
-}
-
-.htmplar-image-mobile {
-    display: none;
 }
 
 @media only screen and (min-width: 48em) {
@@ -227,6 +230,7 @@ a[x-apple-data-detectors] {
     body {
         width: 100% !important;
         min-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .htmplar-image-mobile {
@@ -243,8 +247,14 @@ a[x-apple-data-detectors] {
     .htmplar-button-inner,
     .htmplar-caption,
     .htmplar-caption-image-block,
-    .htmplar-caption-text-block {
+    .htmplar-caption-text-block,
+    .htmplar-mobile-row {
         max-width: 100% !important;
         width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .htmplar-mobile-row {
+        display: inline-block !important;
     }
 }

@@ -9,13 +9,28 @@ import Row from './row';
 import {setMedium} from './utils';
 
 const Block = props => {
-    const {children, className, align, valign, medium} = props;
+    const {children, className, align, valign, medium, cellClasses, isResponsive} = props;
 
     const availableIn = setMedium(medium);
+    let cellClass = cellClasses;
+
+    if (isResponsive) {
+        if (typeof cellClasses === 'string') {
+            cellClass = `${cellClass} htmplar-mobile-row`.trim();
+        }
+
+        else if (Array.isArray(cellClasses)) {
+            cellClass.push('htmplar-mobile-row');
+        }
+
+        else if (typeof cellClasses === 'object') {
+            cellClass['htmplar-mobile-row'] = true;
+        }
+    }
 
     return (
         <table
-            className={classNames('htmplar-block-outer', className, availableIn)}
+            className={classNames('htmplar-block-outer', `${className}-outer`, availableIn)}
             border="0"
             cellPadding={0}
             cellSpacing={0}
@@ -39,7 +54,7 @@ const Block = props => {
                         cellSpacing={0}
                         align={align}
                     >
-                        <Row columns={children} valign={valign}/>
+                        <Row columns={children} valign={valign} cellClasses={cellClass}/>
                     </table>
                     {align === 'center' ?
                         `
@@ -60,7 +75,9 @@ const Block = props => {
 Block.defaultProps = {
     align: 'center',
     valign: 'top',
-    medium: false
+    medium: false,
+    cellClasses: '',
+    isResponsive: false
 };
 
 Block.propTypes = {
@@ -76,12 +93,18 @@ Block.propTypes = {
         PropTypes.object,
         PropTypes.array
     ]),
+    cellClasses: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object,
+        PropTypes.array
+    ]),
     align: PropTypes.string,
     valign: PropTypes.string,
     medium: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.bool
-    ])
+    ]),
+    isResponsive: PropTypes.bool
 };
 
 export default Block;
