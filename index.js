@@ -6,6 +6,7 @@ const render = require('./lib/render');
 const Content = require('./lib/content');
 const Button = require('./lib/button');
 const Block = require('./lib/block');
+const Table = require('./lib/table');
 const Row = require('./lib/row');
 const Column = require('./lib/column');
 const Image = require('./lib/image');
@@ -25,6 +26,7 @@ module.exports = {
     Content: Content.default,
     Button: Button.default,
     Block: Block.default,
+    Table: Table.default,
     Row: Row.default,
     Column: Column.default,
     Image: Image.default,
