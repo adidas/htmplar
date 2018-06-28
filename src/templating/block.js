@@ -13,6 +13,7 @@ const Block = props => {
 
     const availableIn = setMedium(medium);
     let cellClass = cellClasses;
+    let outerClassName = className;
 
     if (isResponsive) {
         if (typeof cellClasses === 'string') {
@@ -28,9 +29,21 @@ const Block = props => {
         }
     }
 
+    if (typeof outerClassName === 'string' && outerClassName.length > 0) {
+        outerClassName += '-outer';
+    }
+
+    if (Array.isArray(outerClassName)) {
+        outerClassName = outerClassName
+            .filter(classname => typeof classname !== 'undefined' && classname.length > 0)
+            .map(classname => classname + '-outer');
+    }
+
     return (
         <table
-            className={classNames('htmplar-block-outer', `${className}-outer`, availableIn)}
+            className={
+                classNames('htmplar-block-outer', outerClassName, availableIn)
+            }
             border="0"
             cellPadding={0}
             cellSpacing={0}
