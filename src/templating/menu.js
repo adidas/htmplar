@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from './link';
-import {setMedium} from './utils';
+import {createID, setMedium} from './utils';
 
 const Menu = props => {
     const {items, className, align, medium} = props;
@@ -27,10 +27,11 @@ const Menu = props => {
                         const {link, label, id, medium} = item;
 
                         const itemAvailableIn = setMedium(medium);
+                        const _id = id === '' ? createID(item) : id;
 
                         return (
                             <td key={index} className={classNames('htmplar-menu-container', itemAvailableIn)}>
-                                <a href={link} id={id}>{label}</a>
+                                <a href={link} id={_id}>{label}</a>
                             </td>
                         );
                     })

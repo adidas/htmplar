@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium} from './utils';
+import {setMedium, createID} from './utils';
 
 const Link = props => {
     const {href, label, id, className, align, children, medium, allCaps} = props;
@@ -13,6 +13,7 @@ const Link = props => {
     const linkLabel = label || children;
 
     const availableIn = setMedium(medium);
+    const _id = id === '' ? createID(props) : id;
 
     return (
         <table
@@ -31,7 +32,7 @@ const Link = props => {
         >
             <tr>
                 <td>
-                    <a href={href} id={id}>{linkLabel}</a>
+                    <a href={href} id={_id}>{linkLabel}</a>
                 </td>
             </tr>
         </table>

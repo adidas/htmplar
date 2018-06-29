@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium} from './utils';
+import {setMedium, createID} from './utils';
 
 const Text = props => {
     const {className, content, children, medium, id} = props;
@@ -13,8 +13,10 @@ const Text = props => {
     const text = content || children;
     const availableIn = setMedium(medium);
 
+    let _id = id === '' ? createID(props) : id;
+
     return (
-        <p id={id} className={classNames('htmplar-text', className, availableIn)}>
+        <p id={_id} className={classNames('htmplar-text', className, availableIn)}>
             {text}
         </p>
     );

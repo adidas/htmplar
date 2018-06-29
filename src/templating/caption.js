@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium} from './utils';
+import {setMedium, createID} from './utils';
 import Image from './image';
 
 const Caption = props => {
@@ -13,6 +13,7 @@ const Caption = props => {
 
     const availableIn = setMedium(medium);
     const imageAlign = imagePlacement || 'top';
+    const _id = id === '' ? createID(props) : id;
     let textAlign;
 
     switch (imageAlign) {
@@ -29,7 +30,7 @@ const Caption = props => {
 
     return (
         <table
-            id={id}
+            id={_id}
             className={classNames('htmplar-caption', className, availableIn)}
             align={align}
             cellPadding={0}
@@ -78,7 +79,8 @@ const Caption = props => {
 Caption.defaultProps = {
     imagePlacement: 'top',
     align: 'left',
-    valign: 'top'
+    valign: 'top',
+    id: ''
 };
 
 Caption.propTypes = {

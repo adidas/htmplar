@@ -5,13 +5,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium} from './utils';
+import {setMedium, createID} from './utils';
 
 const Button = (props) => {
     const {href, children, id, isBlock, className, allCaps, medium} = props;
     let items = children, text, icon = null;
 
     let availableIn = setMedium(medium);
+    const _id = id === '' ? createID(props) : id;
 
     if (typeof children === 'string') {
         items = [items];
@@ -44,7 +45,7 @@ const Button = (props) => {
             border="0"
             cellPadding={0}
             cellSpacing={0}
-            id={id}>
+            id={_id}>
             <tr>
                 <td className="htmplar-button-container htmplar-cell">
                     <table

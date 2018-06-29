@@ -6,12 +6,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Row from './row';
+import {createID} from './utils';
 
 const Table = props => {
-    const {className, children, align, valign, columns, cellClasses, isResponsive} = props;
+    const {className, children, align, valign, columns, cellClasses, isResponsive, id} = props;
     let cols = columns !== null ? columns : children;
 
     let cellClass = cellClasses;
+    const _id = id === '' ? createID(props) : id;
 
     if (isResponsive) {
         if (typeof cellClasses === 'string') {
@@ -34,6 +36,7 @@ const Table = props => {
             cellPadding={0}
             cellSpacing={0}
             align={align}
+            id={_id}
         >
             <Row columns={cols} valign={valign} cellClasses={cellClass}/>
         </table>
@@ -44,7 +47,8 @@ Table.defaultProps = {
     align: 'middle',
     valign: 'top',
     columns: null,
-    isResponsive: false
+    isResponsive: false,
+    id: ''
 };
 
 Table.propTypes = {
@@ -72,6 +76,7 @@ Table.propTypes = {
         PropTypes.object,
         PropTypes.array
     ]),
+    id: PropTypes.string,
     align: PropTypes.string,
     valign: PropTypes.string,
     isResponsive: PropTypes.bool

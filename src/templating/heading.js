@@ -5,15 +5,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium} from './utils';
+import {setMedium, createID} from './utils';
 
 const Heading = props => {
     const {className, children, medium, id} = props;
 
     const availableIn = setMedium(medium);
+    const _id = id === '' ? createID(props) : id;
 
     return (
-        <h2 id={id} className={classNames('htmplar-heading', className, availableIn)}>{children}</h2>
+        <h2 id={_id} className={classNames('htmplar-heading', className, availableIn)}>{children}</h2>
     );
 };
 

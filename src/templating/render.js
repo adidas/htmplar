@@ -74,15 +74,6 @@ const templateHtml = (body, styles, baseStyles) => {
                     ${_styles.templateStyles}
                 </style>
                 ${styles}
-                <!--[if mso]>
-                <style type="text/css">
-                    body, table, td {
-                        font-family: Helvetica, Arial, sans-serif !important;
-                        font-size: 16px;
-                        line-height: 1.25
-                    }
-                </style>
-                <![endif]-->
             </head>
             <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
                 <center>

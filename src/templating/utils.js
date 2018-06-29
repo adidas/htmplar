@@ -46,7 +46,13 @@ const setMedium = medium => {
     return className;
 };
 
+const createID = component =>
+    `htmplar-${Buffer.from(
+        JSON.stringify(component).split('').sort(() => 0.5 - Math.random()).join('')
+    ).toString('base64').substring(0, 12)}`;
+
 export {
     getBaseStyles,
-    setMedium
+    setMedium,
+    createID
 };

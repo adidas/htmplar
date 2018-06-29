@@ -215,9 +215,16 @@ a[x-apple-data-detectors] {
     mso-hide: all;
 }
 
-@media only screen and (min-width: 48em) {
+/* ---> this is only for inline styling */
+.htmplar-image-mobile {
+    display: none;
+}
+/* <--- this is only for inline styling */
+
+@media only screen and (min-width: 30.0625em) {
     .htmplar-only-mobile,
-    .htmplar-image-mobile {
+    .htmplar-image-mobile,
+    .htmplar-image-container-mobile {
         display: none !important;
     }
 }

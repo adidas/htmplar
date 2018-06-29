@@ -71,7 +71,7 @@ const Block = props => {
                     </table>
                     {align === 'center' ?
                         `
-                        <!--[if mso]>
+                        <!--[if (gte mso 9)|(IE)]>
                                 </td>
                             </tr>
                         </table>
