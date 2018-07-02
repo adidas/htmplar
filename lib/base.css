@@ -216,6 +216,7 @@ a[x-apple-data-detectors] {
 }
 
 /* ---> this is only for inline styling */
+.htmplar-only-mobile,
 .htmplar-image-mobile {
     display: none;
 }
@@ -240,8 +241,13 @@ a[x-apple-data-detectors] {
         box-sizing: border-box !important;
     }
 
+    .htmplar-only-mobile,
     .htmplar-image-mobile {
         display: block !important;
+    }
+
+    table.htmplar-only-mobile {
+        display: table !important;
     }
 
     .htmplar-only-desktop,

@@ -9,12 +9,14 @@ import Link from './link';
 import {createID, setMedium} from './utils';
 
 const Menu = props => {
-    const {items, className, align, medium} = props;
+    const {items, className, align, medium, id} = props;
 
     const availableIn = setMedium(medium);
+    const _id = id === '' ? createID(props) : id;
 
     return (
         <table
+            id={_id}
             align={align}
             className={classNames('htmplar-menu', className, availableIn)}
             border="0"
@@ -43,7 +45,8 @@ const Menu = props => {
 
 Menu.defaultProps = {
     align: 'center',
-    medium: 'both'
+    medium: 'both',
+    id: ''
 };
 
 Menu.propTypes = {

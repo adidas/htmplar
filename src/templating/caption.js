@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium, createID} from './utils';
+import {setMedium, slugify} from './utils';
 import Image from './image';
 
 const Caption = props => {
@@ -13,7 +13,7 @@ const Caption = props => {
 
     const availableIn = setMedium(medium);
     const imageAlign = imagePlacement || 'top';
-    const _id = id === '' ? createID(props) : id;
+    const _id = id === '' ? `htmplar-caption-${slugify(title)}` : id;
     let textAlign;
 
     switch (imageAlign) {

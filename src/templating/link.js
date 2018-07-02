@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium, createID} from './utils';
+import {setMedium, slugify} from './utils';
 
 const Link = props => {
     const {href, label, id, className, align, children, medium, allCaps} = props;
@@ -13,7 +13,7 @@ const Link = props => {
     const linkLabel = label || children;
 
     const availableIn = setMedium(medium);
-    const _id = id === '' ? createID(props) : id;
+    const _id = id === '' ? slugify(linkLabel) : id;
 
     return (
         <table

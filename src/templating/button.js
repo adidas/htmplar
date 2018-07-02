@@ -5,14 +5,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {setMedium, createID} from './utils';
+import {setMedium, slugify, createID} from './utils';
 
 const Button = (props) => {
     const {href, children, id, isBlock, className, allCaps, medium} = props;
     let items = children, text, icon = null;
 
     let availableIn = setMedium(medium);
-    const _id = id === '' ? createID(props) : id;
 
     if (typeof children === 'string') {
         items = [items];
@@ -29,6 +28,8 @@ const Button = (props) => {
             };
         }
     });
+
+    const _id = id === '' ? slugify(text || createID(props)) : id;
 
     return (
         <table
