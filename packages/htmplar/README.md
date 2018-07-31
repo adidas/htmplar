@@ -1,11 +1,4 @@
-# `htmplar`
+# `@htmplar/base`
 
-> TODO: description
+This is a bootstrap module for @htmplar apps. Its installs the core modules/dependencies in order to _CLI_ commands work properly
 
-## Usage
-
-```
-const htmplar = require('htmplar');
-
-// TODO: DEMONSTRATE API
-```

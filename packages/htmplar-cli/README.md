@@ -1,6 +1,6 @@
 # @htmplar/cli
 
-Command line tool for @htmplar. For creating a Templar project, check [Getting Started](../README.md)
+Command line tool for @htmplar. For creating a Templar project, check [Getting Started](../../README.md)
 
 
 ## Install

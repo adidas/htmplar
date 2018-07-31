@@ -6,7 +6,7 @@
     "htmplar",
     "render"
   ],
-  "author": "Bilal Cinarli <bilal.cinarli@adidas-group.com>",
+  "author": "Bilal Cinarli <bcinarli@gmail.com>",
   "homepage": "https://github.com/bcinarli/htmplar",
   "license": "MIT",
   "main": "lib/index.js",

@@ -7,7 +7,7 @@
     "templating",
     "server"
   ],
-  "author": "Bilal Cinarli <bilal.cinarli@adidas-group.com>",
+  "author": "Bilal Cinarli <bcinarli@gmail.com>",
   "homepage": "https://github.com/bcinarli/htmplar/tree/master/packages/htmplar-server",
   "license": "MIT",
   "main": "lib/index.js",
