@@ -7,5 +7,6 @@
 /node_modules
 /packages/*/node_modules
 /packages/*/lib
+/packages/*/.htmplarrc.json
 package-lock.json
 yarn.lock
