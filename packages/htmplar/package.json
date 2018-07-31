@@ -1,6 +1,6 @@
 {
   "name": "@htmplar/base",
-  "version": "1.0.0-beta.01",
+  "version": "1.0.0-beta.1",
   "description": "E-mail focused static site creater ",
   "keywords": [
     "htmplar",
@@ -32,7 +32,8 @@
     "url": "https://github.com/bcinarli/htmplar/issues"
   },
   "dependencies": {
-    "@htmplar/serve": "^1.0.0-beta.01",
+    "@htmplar/renderer": "^1.0.0-beta.1",
+    "@htmplar/serve": "^1.0.0-beta.1",
     "rc": "^1.2.8"
   }
 }

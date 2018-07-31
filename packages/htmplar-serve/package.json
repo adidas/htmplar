@@ -1,6 +1,6 @@
 {
   "name": "@htmplar/serve",
-  "version": "1.0.0-beta.01",
+  "version": "1.0.0-beta.1",
   "description": "Local server for development and viewing the rendered contents",
   "keywords": [
     "htmplar",
