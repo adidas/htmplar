@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.01",
   "description": "Developer friendly email development with React",
   "license": "MIT",
+  "main": "lib/index.js",
   "repository": "https://github.com/bcinarli/htmplar/blob/master/packages/htmplar-react",
   "keywords": [
     "react",
@@ -19,8 +20,11 @@
     "yarn": ">= 1.5.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2",
     "rc": "^1.2.8",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "styled-components": "^3.3.3"
   }
 }

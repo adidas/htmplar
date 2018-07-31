@@ -1,0 +1,273 @@
+body,
+#body {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: left;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+#body {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+}
+
+table {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    margin: 0;
+    padding: 0;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+img,
+a img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    vertical-align: bottom;
+    -ms-interpolation-mode: bicubic;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 10px 0;
+    padding: 0;
+}
+
+p, a, li, td, blockquote {
+    mso-line-height-rule: exactly;
+}
+
+a[href^=tel], a[href^=sms] {
+    color: inherit;
+    cursor: default;
+    text-decoration: none;
+}
+
+p, a, li, td, body, table, blockquote {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass td,
+.ExternalClass div,
+.ExternalClass span,
+.ExternalClass font {
+    line-height: 100%;
+}
+
+#outlook a {
+    padding: 0;
+}
+
+.ReadMsgBody {
+    width: 100%;
+}
+
+.ExternalClass {
+    width: 100%;
+}
+
+.htmplar-cell {
+    mso-line-height-rule: exactly;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.htmplar-block {
+    max-width: 100%;
+}
+
+.htmplar-block-inner {
+
+}
+
+.htmplar-button {
+    border-collapse: separate;
+}
+
+.htmplar-button-block,
+.htmplar-button-block .htmplar-button-inner {
+    width: 100%;
+    max-width: 100%;
+}
+
+.htmplar-button-container {
+    padding: 0;
+}
+
+.htmplar-button-inner {
+
+}
+
+.htmplar-button-content {
+
+}
+
+.htmplar-button-cta {
+    display: block;
+}
+
+.htmplar-button-text,
+.htmplar-button-icon,
+.htmplar-button-spacer {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    mso-line-height-rule: exactly;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.htmplar-button-text {
+    letter-spacing: normal;
+    line-height: 100%;
+}
+
+.htmplar-button-text + .htmplar-button-icon,
+.htmplar-button-icon + .htmplar-button-text {
+    padding-left: 20px;
+}
+
+.htmplar-button-icon {
+    vertical-align: top;
+}
+
+.htmplar-button-icon .htmplar-image {
+    vertical-align: middle;
+}
+
+.htmplar-all-caps,
+.htmplar-all-caps .htmplar-button-text,
+.htmplar-all-caps .htmplar-caption-title,
+.htmplar-all-caps .htmplar-heading,
+.htmplar-all-caps .htmplar-headline,
+.htmplar-all-caps a {
+    text-transform: uppercase;
+}
+
+.htmplar-line-outer {
+    width: 100%;
+    text-align: center;
+}
+
+.htmplar-line-container {
+    padding: 10px 0;
+}
+
+.htmplar-line-inner {
+    width: 100%;
+}
+
+.htmplar-horizontal-rule {
+    margin: 0;
+    border: 0;
+    background-color: #ccc;
+}
+
+.htmplar-thin-line {
+    height: 1px;
+}
+
+.htmplar-medium-line {
+    height: 2px;
+}
+
+.htmplar-thick-line {
+    height: 4px;
+}
+
+.htmplar-only-mobile,
+.htmplar-image-mobile,
+.htmplar-hide-in-mso,
+.htmplar-image-container-mobile {
+    mso-hide: all;
+}
+
+/* ---> this is only for inline styling */
+.htmplar-only-mobile,
+.htmplar-image-mobile {
+    display: none;
+}
+/* <--- this is only for inline styling */
+
+@media only screen and (min-width: 30.0625em) {
+    .htmplar-only-mobile,
+    .htmplar-image-mobile,
+    .htmplar-image-container-mobile {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 30em) {
+    body, table, td, p, a, li, blockquote {
+        -webkit-text-size-adjust: none !important;
+    }
+
+    body {
+        width: 100% !important;
+        min-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .htmplar-only-mobile,
+    .htmplar-image-mobile {
+        display: block !important;
+    }
+
+    table.htmplar-only-mobile {
+        display: table !important;
+    }
+
+    .htmplar-only-desktop,
+    .htmplar-image-desktop {
+        display: none !important;
+    }
+
+    .htmplar-block,
+    .htmplar-button,
+    .htmplar-button-inner,
+    .htmplar-caption,
+    .htmplar-caption-image-block,
+    .htmplar-caption-text-block,
+    .htmplar-mobile-row {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .htmplar-mobile-row {
+        display: inline-block !important;
+    }
+}
