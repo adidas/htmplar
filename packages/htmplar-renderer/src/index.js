@@ -25,10 +25,10 @@ const _eval = (file) => {
   ];
 
   if (file.includes(`/${ block.prefix }`)) {
-    stream.push(`import {contentBlock, getBaseStyles} from 'htmplar-${ renderer.toLowerCase() }';`);
+    stream.push(`import {contentBlock, getBaseStyles} from 'htmplar-plugin-${ renderer.toLowerCase() }';`);
     stream.push('contentBlock(getBaseStyles)(Component);');
   } else {
-    stream.push(`import {template, getBaseStyles} from 'htmplar-${ renderer.toLowerCase() }';`);
+    stream.push(`import {template, getBaseStyles} from 'htmplar-plugin-${ renderer.toLowerCase() }';`);
     stream.push('template(getBaseStyles)(Component);');
   }
 
