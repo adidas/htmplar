@@ -4,3 +4,4 @@ lerna.json
 node_modules
 packages/*/node_modules
 packages/*/lib
+packages/*/__tests__

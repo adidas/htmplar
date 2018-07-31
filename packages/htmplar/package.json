@@ -1,14 +1,17 @@
 {
-  "name": "@htmplar/serve",
+  "name": "@htmplar/base",
   "version": "1.0.0-beta.01",
-  "description": "Local server for development and viewing the rendered contents",
+  "description": "E-mail focused static site creater ",
   "keywords": [
     "htmplar",
-    "templating",
-    "server"
+    "email",
+    "react",
+    "vue",
+    "ssr",
+    "html"
   ],
   "author": "Bilal Cinarli <bilal.cinarli@adidas-group.com>",
-  "homepage": "https://github.com/bcinarli/htmplar/tree/master/packages/htmplar-server",
+  "homepage": "https://github.com/bcinarli/htmplar",
   "license": "MIT",
   "main": "lib/index.js",
   "directories": {
@@ -20,13 +23,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcinarli/htmplar/tree/master/packages/htmplar-server"
+    "url": "git+https://github.com/bcinarli/htmplar.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "bugs": {
+    "url": "https://github.com/bcinarli/htmplar/issues"
+  },
   "dependencies": {
-    "express": "^4.16.3",
+    "@htmplar/serve": "^1.0.0-beta.01",
     "rc": "^1.2.8"
   }
 }

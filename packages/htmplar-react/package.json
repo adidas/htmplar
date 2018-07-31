@@ -1,9 +1,9 @@
 {
-  "name": "htmplar",
-  "version": "1.0.0",
+  "name": "@htmplar/react",
+  "version": "1.0.0-beta.01",
   "description": "Developer friendly email development with React",
   "license": "MIT",
-  "repository": "https://tools.adidas-group.com/bitbucket/projects/CEA/repos/htmplar/browse/packages/htmplar",
+  "repository": "https://github.com/bcinarli/htmplar/blob/master/packages/htmplar-react",
   "keywords": [
     "react",
     "es6",
@@ -17,5 +17,10 @@
     "node": ">= 8.0.0",
     "npm": ">= 5.x",
     "yarn": ">= 1.5.0"
+  },
+  "dependencies": {
+    "rc": "^1.2.8",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   }
 }

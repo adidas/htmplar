@@ -1,11 +1,16 @@
 #!/usr/bin/env node
+"use strict";
 
-import { logger } from './utils';
-import cli from './options';
+var _utils = require("./utils");
+
+var _options = _interopRequireDefault(require("./options"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 try {
-  cli(process.argv);
+  (0, _options.default)(process.argv);
 } catch (err) {
-  logger.error(err);
+  _utils.logger.error(err);
+
   process.exit(1);
 }
