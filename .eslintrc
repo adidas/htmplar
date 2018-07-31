@@ -1,7 +1,7 @@
 {
   "extends": [
-    "@pea/eslint-config-env/node",
-    "@pea/eslint-config-es6",
-    "@pea/eslint-config-react"
+    "eslint-config-adidas-env/node",
+    "eslint-config-adidas-es6",
+    "eslint-config-adidas-react"
   ]
 }
