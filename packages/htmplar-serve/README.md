@@ -1,11 +1,3 @@
-# `htmplar-serve`
+# @htmplar/serve
 
-> TODO: description
-
-## Usage
-
-```
-const htmplarServe = require('htmplar-serve');
-
-// TODO: DEMONSTRATE API
-```
+Express based local server for @htmplar app development.
