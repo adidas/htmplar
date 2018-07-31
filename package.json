@@ -28,6 +28,9 @@
     "lerna": "^3.0.0-rc.0",
     "lerna-changelog": "^0.8.0"
   },
+  "workspaces": {
+    "packages": ["packages/*"]
+  },
   "engines": {
     "node": ">= 8.0.0",
     "npm": ">= 5.x",
