@@ -11,6 +11,7 @@
   "server": {
     "port": 3000
   },
+  "renderer": "react",
   "logs": "detailed",
   "linting": [
     true,

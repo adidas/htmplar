@@ -1,22 +1,29 @@
 {
-  "name": "htmplar",
+  "name": "htmplar-monorepo",
   "private": true,
   "license": "MIT",
   "scripts": {
     "build": "",
-    "lint": "",
+    "lint": "eslint packages/*/src --fix",
     "precommit": "",
     "test": ""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcinarli/htmplar.git"
+  },
   "devDependencies": {
-    "@pea/eslint-config-env": "^1.1.1",
-    "@pea/eslint-config-es5": "^1.1.1",
-    "@pea/eslint-config-es6": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-plugin-import": "^2.12.0",
+    "@babel/cli": "^7.0.0-beta.55",
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/node": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "@pea/eslint-config-env": "^1.3.1",
+    "@pea/eslint-config-es6": "^1.2.0",
+    "eslint": "^5.2.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-promise": "^3.8.0",
-    "lerna": "^2.11.0",
-    "lerna-changelog": "^0.7.0"
+    "lerna": "^3.0.0-rc.0",
+    "lerna-changelog": "^0.8.0"
   },
   "engines": {
     "node": ">= 8.0.0",

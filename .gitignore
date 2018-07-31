@@ -1,10 +1,11 @@
+.DS_Store
 .vscode
 .idea
-.DS_Store
-atlassian-ide-plugin.xml
-node_modules
+.npmrc
+*.log
+*.cache
+/node_modules
+/packages/*/node_modules
+/packages/*/lib
 package-lock.json
 yarn.lock
-yarn
-*.log
-.npmrc

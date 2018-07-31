@@ -1,15 +1,15 @@
 {
-  "name": "@htmplar/cli",
+  "name": "htmplar",
   "version": "1.0.0",
-  "description": "Templar command line",
+  "description": "Developer friendly email development with React",
   "license": "MIT",
-  "repository": "https://github.com/bcinarli/htmplar/tree/master/packages/htmplar-cli",
+  "repository": "https://tools.adidas-group.com/bitbucket/projects/CEA/repos/htmplar/browse/packages/htmplar",
   "keywords": [
     "react",
     "es6",
     "email",
     "template",
-    "cli"
+    "generator"
   ],
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "scripts": {},
@@ -17,11 +17,5 @@
     "node": ">= 8.0.0",
     "npm": ">= 5.x",
     "yarn": ">= 1.5.0"
-  },
-  "bin": {
-    "htmplar": "./bin/htmplar.js"
-  },
-  "dependencies": {
-    "commander": "^2.15.1"
   }
 }
