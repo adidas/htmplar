@@ -7,11 +7,11 @@ Templar is an e-mail oriented HTML generator. It is created for developer friend
 * [Getting Started](#getting-started)
 * Core Modules
   * [@htmplar/cli](./packages/htmplar-cli)
-  * [@htmplar/base](./packages/htmplar-base)
+  * [@htmplar/base](./packages/htmplar)
   * [@htmplar/renderer](./packages/htmplar-renderer)
   * [@htmplar/serve](./packages/htmplar-serve)
 * Plugins
-  * [@htmplar/react](./packages/htmplar-react)
+  * [@htmplar/plugin-react](./packages/htmplar-plugin-react)
 * [Configure](#configure)
   * [.htmplarrc](#configuration-file)
   * [Configuration Options](#configuration-options)
