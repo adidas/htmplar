@@ -1,17 +1,18 @@
 {
   "name": "htmplar",
-  "version": "0.0.1",
   "description": "Developer friendly email development with React",
-  "main": "index.js",
+  "version": "0.0.1",
   "repository": "https://cinarbil@tools.adidas-group.com/bitbucket/scm/cea/htmplar.git",
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "license": "MIT",
+  "main": "index.js",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.46"
   },
   "scripts": {
     "build:lib": "babel src/templating --out-dir lib",
-    "lint": "eslint src/**/*.js --fix",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "npm run lint -- --fix",
     "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build:lib'"
   },
   "dependencies": {
@@ -19,12 +20,19 @@
     "@babel/preset-env": "^7.0.0-beta.46",
     "@babel/preset-react": "^7.0.0-beta.46",
     "@babel/register": "^7.0.0-beta.46",
+    "babel-eslint": "^7.2.3",
     "chalk": "^2.4.1",
     "classnames": "^2.2.5",
     "clui": "^0.3.6",
     "configstore": "^3.1.2",
-    "eslint": "^5.0.0-alpha.3",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint": "^4.19.1",
+    "eslint-config-adidas-babel": "^1.0.0",
+    "eslint-config-adidas-env": "^1.0.0",
+    "eslint-config-adidas-es7": "^1.0.0",
+    "eslint-config-adidas-react": "^1.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
     "express": "^4.16.3",
     "figlet": "^1.2.0",
     "inline-css": "^2.4.0",

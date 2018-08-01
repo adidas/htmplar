@@ -1,10 +1,8 @@
-/**
- * walker
- **/
+// walker
 
 const fs = require('fs');
 const path = require('path');
-const {exclude} = require('./config');
+const { exclude } = require('./config');
 
 const walkSync = (dir, filelist = []) => {
     if(exclude.length > 0 && exclude.includes(dir)) {
@@ -22,5 +20,5 @@ const walkSync = (dir, filelist = []) => {
 };
 
 module.exports = {
-    walkSync
+  walkSync
 };

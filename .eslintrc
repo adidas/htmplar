@@ -1,4 +1,10 @@
 {
+  "extends": [
+    "adidas-es7",
+    "adidas-env/node",
+    "adidas-babel",
+    "adidas-react"
+  ],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
@@ -9,10 +15,6 @@
   "env": {
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
   "rules": {
     "curly": "error",
     "eqeqeq": [

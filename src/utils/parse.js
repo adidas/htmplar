@@ -1,22 +1,20 @@
-/**
- * parse-arguments
- **/
+// parse-arguments
 
-const createCliArgs = commands => {
-    const cli = [];
-    let cmd = '';
+const createCliArgs = (commands) => {
+  const cli = [];
+  let cmd = '';
 
-    if (typeof commands === 'object' && commands !== null) {
-        Object.keys(commands).forEach(key => {
-            cli.push(`--${key} ${commands[key]}`);
-        });
+  if (typeof commands === 'object' && commands !== null) {
+    Object.keys(commands).forEach((key) => {
+      cli.push(`--${ key } ${ commands[key] }`);
+    });
 
-        cmd = cli.join(' ');
-    }
+    cmd = cli.join(' ');
+  }
 
-    return cmd;
+  return cmd;
 };
 
 module.exports = {
-    createCliArgs
+  createCliArgs
 };
