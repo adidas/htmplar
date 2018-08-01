@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-/* cli */
+// cli
 
 const { config: { server, linting, source } } = require('../utils');
-
-const [ , , ...args ] = process.argv;
 const { welcome, info, success } = require('../utils/log');
 const { build, watch, lint } = require('../tasks');
 const app = require('../server');
+
+const [ , , ...args ] = process.argv;
 
 if (!args.length) {
   welcome();

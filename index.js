@@ -1,42 +1,40 @@
-/**
- * index
- **/
+// index
 
-const render = require('./lib/render');
-const Content = require('./lib/content');
-const Button = require('./lib/button');
-const Block = require('./lib/block');
-const Table = require('./lib/table');
-const Row = require('./lib/row');
-const Column = require('./lib/column');
-const Image = require('./lib/image');
-const Menu = require('./lib/menu');
-const Link = require('./lib/link');
-const Text = require('./lib/text');
-const Line = require('./lib/line');
-const Headline = require('./lib/headline');
-const Heading = require('./lib/heading');
-const Caption = require('./lib/caption');
-const HideMSO = require('./lib/hidemso');
-const {getBaseStyles} = require('./lib/utils');
+const { contentBlock, template } = require('./lib/render');
+const { default: Content } = require('./lib/content');
+const { default: Button } = require('./lib/button');
+const { default: Block } = require('./lib/block');
+const { default: Table } = require('./lib/table');
+const { default: Row } = require('./lib/row');
+const { default: Column } = require('./lib/column');
+const { default: Image } = require('./lib/image');
+const { default: Menu } = require('./lib/menu');
+const { default: Link } = require('./lib/link');
+const { default: Text } = require('./lib/text');
+const { default: Line } = require('./lib/line');
+const { default: Headline } = require('./lib/headline');
+const { default: Heading } = require('./lib/heading');
+const { default: Caption } = require('./lib/caption');
+const { default: HideMSO } = require('./lib/hidemso');
+const { getBaseStyles } = require('./lib/utils');
 
 module.exports = {
-    contentBlock: render.contentBlock,
-    template: render.template,
-    Content: Content.default,
-    Button: Button.default,
-    Block: Block.default,
-    Table: Table.default,
-    Row: Row.default,
-    Column: Column.default,
-    Image: Image.default,
-    Menu: Menu.default,
-    Link: Link.default,
-    Text: Text.default,
-    Line: Line.default,
-    Headline: Headline.default,
-    Heading: Heading.default,
-    Caption: Caption.default,
-    HideMSO: HideMSO.default,
-    getBaseStyles: getBaseStyles
+  contentBlock,
+  template,
+  Content,
+  Button,
+  Block,
+  Table,
+  Row,
+  Column,
+  Image,
+  Menu,
+  Link,
+  Text,
+  Line,
+  Headline,
+  Heading,
+  Caption,
+  HideMSO,
+  getBaseStyles
 };

@@ -23,6 +23,7 @@ const createPath = (dir) => {
 const store = async (content, options) => {
   createPath(options.dir);
   const savePath = path.join(options.dir, options.name);
+
   let inline = '';
 
   if (savePath.includes(block.prefix)) {

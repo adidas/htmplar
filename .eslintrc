@@ -1,37 +1,11 @@
 {
   "extends": [
-    "adidas-es7",
+    "adidas-es8",
     "adidas-env/node",
     "adidas-babel",
     "adidas-react"
   ],
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "node": true
-  },
   "rules": {
-    "curly": "error",
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
-    "global-require": "error",
-    "quotes": [
-      "error",
-      "single",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
-    ],
-    "semi": "error",
-    "space-before-blocks": "error",
-    "no-console": "warn"
+    "react/no-array-index-key": "off"
   }
 }

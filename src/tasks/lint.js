@@ -1,6 +1,6 @@
 // lint
 
-const CLIEngine = require('eslint').CLIEngine;
+const { CLIEngine } = require('eslint');
 const defaultLinting = require('../../lib/eslint-defaults');
 const { logger: { log, warn, info } } = require('../utils');
 

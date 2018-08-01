@@ -54,10 +54,10 @@ const Caption = (props) => {
             <tr>
               <td className={ classNames('htmplar-caption-content') } valign={ valign }>
                 {
-                                    title ?
-                                      <h2 className={ classNames('htmplar-caption-title') }>{ title }</h2> :
-                                      ''
-                                }
+                  title ?
+                    <h2 className={ classNames('htmplar-caption-title') }>{ title }</h2> :
+                    ''
+                }
                 { children }
               </td>
             </tr>

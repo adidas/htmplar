@@ -29,14 +29,14 @@ const Block = (props) => {
 
   if (Array.isArray(outerClassName)) {
     outerClassName = outerClassName
-            .filter((classname) => typeof classname !== 'undefined' && classname.length > 0)
-            .map((classname) => `${ classname }-outer`);
+      .filter((classname) => typeof classname !== 'undefined' && classname.length > 0)
+      .map((classname) => `${ classname }-outer`);
   }
 
   return (
     <table className={
-                classNames('htmplar-block-outer', outerClassName, availableIn)
-            }
+          classNames('htmplar-block-outer', outerClassName, availableIn)
+        }
         border="0"
         cellPadding={ 0 }
         cellSpacing={ 0 }
@@ -45,13 +45,13 @@ const Block = (props) => {
         <td className="htmplar-block-container" valign={ valign }>
           { align === 'center' ?
             `
-                        <!--[if (gte mso 9)|(IE)]>
-                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="width:640px;">
-                                <tr>
-                                    <td align="center" valign="top" width="640" style="width:640px;">
-                        <![endif]-->` :
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="width:640px;">
+              <tr>
+                <td align="center" valign="top" width="640" style="width:640px;">
+            <![endif]-->` :
             ''
-                    }
+          }
           <table className={ classNames('htmplar-block', className) }
               border="0"
               cellPadding={ 0 }
@@ -61,14 +61,14 @@ const Block = (props) => {
           </table>
           { align === 'center' ?
             `
-                        <!--[if (gte mso 9)|(IE)]>
-                                </td>
-                            </tr>
-                        </table>
-                        <![endif]-->
-                        ` :
+            <!--[if (gte mso 9)|(IE)]>
+                </td>
+              </tr>
+            </table>
+            <![endif]-->
+            ` :
             ''
-                    }
+          }
         </td>
       </tr>
     </table>

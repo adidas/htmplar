@@ -7,10 +7,8 @@ import { setMedium, createID } from './utils';
 
 const Text = (props) => {
   const { className, content, children, medium, id } = props;
-
   const text = content || children;
   const availableIn = setMedium(medium);
-
   const _id = id === '' ? createID(props) : id;
 
   return (

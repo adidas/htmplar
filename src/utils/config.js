@@ -1,6 +1,8 @@
 // config
 
+const rc = require('rc');
 const defaultCfg = require('../../.htmplarrc.json');
-const config = require('rc')('htmplar', defaultCfg);
+
+const config = rc('htmplar', defaultCfg);
 
 module.exports = config;

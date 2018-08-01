@@ -10,10 +10,10 @@
     "@babel/cli": "^7.0.0-beta.46"
   },
   "scripts": {
-    "build:lib": "babel src/templating --out-dir lib",
-    "lint": "eslint src/**/*.js",
+    "build": "babel src/templating --out-dir lib",
+    "lint": "eslint index.js src/**/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build:lib'"
+    "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build'"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
@@ -28,7 +28,7 @@
     "eslint": "^4.19.1",
     "eslint-config-adidas-babel": "^1.0.0",
     "eslint-config-adidas-env": "^1.0.0",
-    "eslint-config-adidas-es7": "^1.0.0",
+    "eslint-config-adidas-es8": "^1.0.0",
     "eslint-config-adidas-react": "^1.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-promise": "^3.8.0",

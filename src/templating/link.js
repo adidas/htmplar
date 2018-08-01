@@ -16,13 +16,13 @@ const Link = (props) => {
   return (
     <table align={ align }
         className={
-                classNames(
-                  'htmplar-link', className, availableIn,
-                  {
-                    'htmplar-all-caps': allCaps
-                  }
-                )
+          classNames(
+            'htmplar-link', className, availableIn,
+            {
+              'htmplar-all-caps': allCaps
             }
+          )
+        }
         border="0"
         cellPadding={ 0 }
         cellSpacing={ 0 }>
@@ -37,7 +37,6 @@ const Link = (props) => {
 
 Link.defaultProps = {
   align: 'left',
-  href: '#',
   medium: 'both',
   allCaps: false
 };

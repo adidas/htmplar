@@ -14,9 +14,9 @@ const Row = (props) => {
   return (
     <tr className={ classNames('htmplar-row', className) }>
       { cells.map((cell, index) => {
-        const _className =
-                    cell.props && cell.props.className
-                      ? `${ cell.props.className }-parent` : '';
+        const _className = cell.props && cell.props.className
+          ? `${ cell.props.className }-parent`
+          : '';
 
         return (
           <Column key={ index } valign={ valign } className={ _className } cellClasses={ cellClasses }>

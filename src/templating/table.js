@@ -9,9 +9,9 @@ import { createID } from './utils';
 const Table = (props) => {
   const { className, children, align, valign, columns, cellClasses, isResponsive, id } = props;
   const cols = columns !== null ? columns : children;
+  const _id = id === '' ? createID(props) : id;
 
   let cellClass = cellClasses;
-  const _id = id === '' ? createID(props) : id;
 
   if (isResponsive) {
     if (typeof cellClasses === 'string') {

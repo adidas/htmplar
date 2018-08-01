@@ -1,4 +1,8 @@
 const Module = require('module');
+const vm = require('vm');
+const path = require('path');
+const babel = require('@babel/core');
+const pretty = require('pretty');
 
 require('@babel/register')({
   presets: [
@@ -6,41 +10,39 @@ require('@babel/register')({
     '@babel/preset-react'
   ]
 });
-const vm = require('vm');
-const path = require('path');
-const babel = require('@babel/core');
-const pretty = require('pretty');
 
-const _eval = function(file) {
-  if (!file) {
-    return undefined;
+function _eval(file) {
+  let result;
+
+  if (file) {
+    const stream = [
+      'import React from \'react\';',
+      `import Component from '${ path.join(process.cwd(), file) }';`
+    ];
+
+    if (file.includes('/block-')) {
+      stream.push('import {contentBlock, getBaseStyles} from \'htmplar\';');
+      stream.push('contentBlock(getBaseStyles)(Component);');
+    } else {
+      stream.push('import {template, getBaseStyles} from \'htmplar\';');
+      stream.push('template(getBaseStyles)(Component);');
+    }
+
+    const { code } = babel.transform(stream.join('\n'), {
+      filename: file,
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+      ]
+    });
+
+    result = vm.runInThisContext(code, {
+      filename: file
+    });
   }
 
-  const stream = [
-    'import React from \'react\';',
-    `import Component from '${ path.join(process.cwd(), file) }';`
-  ];
-
-  if (file.includes('/block-')) {
-    stream.push('import {contentBlock, getBaseStyles} from \'htmplar\';');
-    stream.push('contentBlock(getBaseStyles)(Component);');
-  } else {
-    stream.push('import {template, getBaseStyles} from \'htmplar\';');
-    stream.push('template(getBaseStyles)(Component);');
-  }
-
-  const code = babel.transform(stream.join('\n'), {
-    filename: file,
-    presets: [
-      '@babel/preset-env',
-      '@babel/preset-react'
-    ]
-  }).code;
-
-  return vm.runInThisContext(code, {
-    filename: file
-  });
-};
+  return result;
+}
 
 const transform = (file) => {
   global.__filename = file;

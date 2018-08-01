@@ -21,12 +21,12 @@ const Line = (props) => {
             <tr>
               <td className="htmplar-rule-container">
                 <hr className={
-                                    classNames('htmplar-horizontal-rule', {
-                                      'htmplar-thin-line': thickness === 'thin',
-                                      'htmplar-medium-line': thickness === 'medium',
-                                      'htmplar-thick-line': thickness === 'thick'
-                                    })
-                                } />
+                    classNames('htmplar-horizontal-rule', {
+                      'htmplar-thin-line': thickness === 'thin',
+                      'htmplar-medium-line': thickness === 'medium',
+                      'htmplar-thick-line': thickness === 'thick'
+                    })
+                  } />
               </td>
             </tr>
           </table>

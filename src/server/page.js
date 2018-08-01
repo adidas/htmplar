@@ -1,9 +1,10 @@
 // page
 
+const rc = require('rc');
 const defaultCfg = require('../../.htmplarrc.json');
-const { output, sharedContent } = require('rc')('htmplar', defaultCfg);
 const { walkSync } = require('../utils');
 
+const { output, sharedContent } = rc('htmplar', defaultCfg);
 const pages = [];
 
 const getPage = (fileData) => {
@@ -24,18 +25,17 @@ const getPage = (fileData) => {
 
 const setPage = (pageData) => {
   const listItem =
-        `<li style="padding: 8px 16px 8px 8px; border-bottom: 1px solid #ddd;">
-            <a style="width: 100%;
-                    display: inline-block;
-                    padding: 8px 16px 8px 8px;
-                    position: relative;
-                    text-decoration: none;
-                    color: #000;" 
-                href="${ pageData.href }"
-            >
-                ${ pageData.pageName }
-            </a>
-        </li>`;
+    `<li style="padding: 8px 16px 8px 8px; border-bottom: 1px solid #ddd;">
+      <a style="width: 100%;
+          display: inline-block;
+          padding: 8px 16px 8px 8px;
+          position: relative;
+          text-decoration: none;
+          color: #000;"
+          href="${ pageData.href }">
+        ${ pageData.pageName }
+      </a>
+    </li>`;
 
   if (pages.indexOf(listItem) === -1) {
     pages.push(listItem);
