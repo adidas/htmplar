@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import {createID, setMedium} from './utils';
 
 const Image = (props) => {
-    const {src, align, className, title, medium, id} = props;
+    const {src, align, className, title, medium, id, width, height} = props;
 
     let availableIn = setMedium(medium);
     const _id = id === '' ? createID(props) : id;
@@ -20,12 +20,12 @@ const Image = (props) => {
                 const url = src[type];
                 return (
                     <span key={type} id={`${_id}-${type}`} className={classNames('htmplar-image-container', className, 'htmplar-image-container-' + type)}>
-                        <img align={align} src={url} alt={title}
+                        <img align={align} src={url} alt={title} width={width} height={height}
                          className={classNames('htmplar-image', className, 'htmplar-image-' + type)}/>
                     </span>
                 );
             }) :
-            <img id={_id} align={align} src={src} alt={title}
+            <img id={_id} align={align} src={src} alt={title} width={width} height={height}
                  className={classNames('htmplar-image', className, imageSize, availableIn)}/>
     );
 };
@@ -45,6 +45,8 @@ Image.propTypes = {
     id: PropTypes.string,
     align: PropTypes.string,
     medium: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
     className: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object
