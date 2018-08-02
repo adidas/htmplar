@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { createID, setMedium } from '../utils';
 
 const Image = (props) => {
-  const { src, align, className, title, medium, id } = props;
+  const { src, align, className, title, medium, id, width, height } = props;
 
   const availableIn = setMedium(medium);
   const _id = id === '' ? createID(props) : id;
@@ -22,6 +22,8 @@ const Image = (props) => {
             <img align={ align }
                 src={ url }
                 alt={ title }
+                width={ width }
+                height={ height }
                 className={ classNames('htmplar-image', className, `htmplar-image-${ type }`) } />
           </span>
         );
@@ -30,6 +32,8 @@ const Image = (props) => {
             align={ align }
             src={ src }
             alt={ title }
+            width={ width }
+            height={ height }
             className={ classNames('htmplar-image', className, imageSize, availableIn) } />
       ));
 };
@@ -49,6 +53,8 @@ Image.propTypes = {
   id: PropTypes.string,
   align: PropTypes.string,
   medium: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
   className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object

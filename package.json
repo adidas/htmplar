@@ -25,11 +25,13 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
-    "lerna": "^3.0.0-rc.0",
+    "lerna": "^2.11.0",
     "lerna-changelog": "^0.8.0"
   },
   "workspaces": {
-    "packages": ["packages/*"]
+    "packages": [
+      "packages/*"
+    ]
   },
   "engines": {
     "node": ">= 8.0.0",
