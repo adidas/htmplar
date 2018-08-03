@@ -19,6 +19,10 @@ The use case of this library is to create e-mail templates to improve the develo
 
 adidas is not responsible for the usage of this software for different purposes that the ones described in the use cases.
 
+## Requirements and dependencies
+
+You need [NodeJS/NPM](https://nodejs.org/) to install and run the tool.
+
 ## Installation
 
 ```
