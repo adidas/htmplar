@@ -10,13 +10,13 @@ const createPath = (dir) => {
   const folders = dir.split(path.sep);
 
   folders.reduce((currentPath, folder) => {
-    const path = `${ currentPath }${ folder }${ path.sep }`;
+    const folderPath = `${ currentPath }${ folder }${ path.sep }`;
 
-    if (!fs.existsSync(path)) {
-      fs.mkdirSync(path);
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath);
     }
 
-    return path;
+    return folderPath;
   }, '');
 };
 
