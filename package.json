@@ -2,7 +2,7 @@
   "name": "htmplar",
   "description": "Developer friendly email development with React",
   "version": "0.0.1",
-  "repository": "https://cinarbil@tools.adidas-group.com/bitbucket/scm/cea/htmplar.git",
+  "repository": "https://github.com/adidas/htmplar.git",
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "license": "MIT",
   "main": "index.js",
