@@ -1,7 +1,7 @@
 {
   "name": "htmplar",
   "description": "Developer friendly email development with React",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/adidas/htmplar.git",
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "license": "MIT",
