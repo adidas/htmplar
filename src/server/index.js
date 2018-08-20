@@ -18,10 +18,10 @@ const start = () => {
     res.status(STATUS_OK).send(
       `
       <title>HTMplar</title>
-        <div style="background: #fff; font: 16px/1.25 AdiHaus, Helvetica, Arial, sans-serif;">
+      <div style="background: #fff; font: 16px/1.25 AdiHaus, Helvetica, Arial, sans-serif;">
         <div style="width: 100%; max-width: 640px !important; margin: auto;"
             class="htmplar-landing-page">
-          <h1 style="margin: 32px 16px;"
+          <h1 style="margin: 32px 8px;"
               class="htmplar-landing-page-title">
             My Email Templates
           </h1>
