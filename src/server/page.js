@@ -14,8 +14,8 @@ const getPage = (fileData) => {
     const fileDir = fileData.dir.split(output);
     const href = fileDir[fileDir.length - 1];
     const fileName = fileData.dir.split('/');
-    const pageName = fileName[fileName.length - 1].replace('-', ' ');
-    const programName = fileName[2].replace('-', ' ');
+    const pageName = fileName[fileName.length - 1].replace(/-/g, ' ');
+    const programName = fileName[2].replace(/-/g, ' ');
 
     return {
       programName,
