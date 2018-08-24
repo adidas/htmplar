@@ -15,7 +15,8 @@ const getPage = (fileData) => {
     const href = fileDir[fileDir.length - 1];
     const fileName = fileData.dir.split('/');
     const pageName = fileName[fileName.length - 1].replace(/-/g, ' ');
-    const programName = fileName[2].replace(/-/g, ' ');
+
+    const programName = fileName[2] ? fileName[2].replace(/-/g, ' ') : '';
 
     return {
       programName,
@@ -29,7 +30,7 @@ const getPage = (fileData) => {
 
 const setPage = (pageData) => {
   for (const program in pageData) {
-    if (pageData.hasOwnProperty(program)) {
+    if (pageData.hasOwnProperty(program) && program !== '') {
       const items = [];
 
       pageData[program].pages.forEach((page) => {
