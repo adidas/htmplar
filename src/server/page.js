@@ -46,7 +46,11 @@ const setPage = (pageData) => {
                   ${ page.pageName }
                 </a>`;
 
-        if (items.indexOf(item) === -1) {
+        if (pageData[program].pages.length > 1) {
+          if (pageData[program].pages.indexOf(page) > 0 && items.indexOf(item) === -1) {
+            items.push(item);
+          }
+        } else if (items.indexOf(item) === -1) {
           items.push(item);
         }
       });
