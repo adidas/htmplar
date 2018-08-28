@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { setMedium, slugify } from './utils';
 
 const Link = (props) => {
-  const { href, label, id, className, align, children, medium, allCaps } = props;
+  const { href, label, id, alias, name, className, align, children, medium, allCaps } = props;
 
   const linkLabel = label || children;
 
@@ -28,7 +28,7 @@ const Link = (props) => {
         cellSpacing={ 0 }>
       <tr>
         <td>
-          <a href={ href } id={ _id }>{ linkLabel }</a>
+          <a href={ href } id={ _id } alias={ alias } name={ name }>{ linkLabel }</a>
         </td>
       </tr>
     </table>
@@ -48,6 +48,8 @@ Link.propTypes = {
     PropTypes.object
   ]),
   id: PropTypes.string.isRequired,
+  alias: PropTypes.string,
+  name: PropTypes.string,
   medium: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.object,
