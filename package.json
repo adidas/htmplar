@@ -50,5 +50,8 @@
   "preferGlobal": true,
   "bin": {
     "htmplar": "./src/cli/index.js"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
 }

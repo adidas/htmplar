@@ -1,11 +1,12 @@
 language: node_js
 node_js:
 - '9'
+before_install:
+  - npm i -g makeshift && makeshift -s @adidas -r registry.npmjs.org
 deploy:
   provider: npm
   email: uxteam@adidas-group.com
-  api_key:
-    secure: O9ms/IvlZi/nTm+IIOMrGTVudKrHiN3rztwOX7RVVXIJd8wHNwv4C3gmNgIoSoEwYEPnaDphBPSjGpjaR5BkHi837ZWDGabLJ/vJ7eFxQbPRmCGbCGz9nSXID8QNevsFRN/8ax0o5bt+kg5ksKH5d79Z9guNH8sfmqmEn7dHqGGWDNgAPB0tyy+fDOP1Fa2r8aU86R28atYD5M7MOKinLvDz/k85tW2pWzJtGDEuzy+i9r+OQGCPsp4Qk72g3sXWpRF3VqvyGQqZ8iDuaXzgS5cGP4GKltiRIX3ghWWh8lj1Tjyo6Z7U7JBFJq0DG4758+GEfqT1D3tht1pD1tA+pRa0q0Y4Saa5fLkPRk11vd3TkJCiJx9X0b+cjDh0GAmTnm95jmDAifhteP54RHnDCjFOYo2xvDoSQObaB2X7GOgpTmA2SnKD+3HtAwakvOfdVYgSikTERri/FfQq7fLqH7d9qq0lILL+dbj2yWq1n7292VTtZQ/9jASb+hHs0GfQKHe8YbuxO1OeJGJDKMbzveZYz/zd8/84sh5g2EVH7JchFw95V+kp85Q+G62+vAtbQJi52x+neSq3T14qEg7pNEE6czNk1OwNp1ebHlWAMEHp+NgdfUOs1FpJD8gdDzdGKywpuxyPj14653AA3PZqP1xhkUr00iZAT/oDjDN6d0Y=
+  api_key: $NPM_TOKEN
   on:
     tags: true
     repo: adidas/htmplar
