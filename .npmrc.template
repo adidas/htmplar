@@ -1,3 +1,0 @@
-always-auth=true
-registry=https://www.npmjs.com/package/htmplar/
-//www.npmjs.com/package/htmplar/:_authToken=${API_TOKEN}
