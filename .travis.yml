@@ -12,6 +12,6 @@ deploy:
 notifications:
   email:
     recipients:
-    - julio@packagecloud.io
+    - berkan.dirim@adidas.com
     on_success: change
     on_failure: always
