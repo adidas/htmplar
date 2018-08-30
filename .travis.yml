@@ -1,17 +1,22 @@
 language: node_js
 node_js:
-- '9'
-before_install:
-  - npm i -g makeshift && makeshift -s @adidas -r registry.npmjs.org
+- "8"
+
+install:
+- npm install
+
+script:
+- npm run lint
+- npm run build
+
 deploy:
   provider: npm
   email: uxteam@adidas-group.com
   api_key: $NPM_TOKEN
   on:
     tags: true
-    repo: adidas/htmplar
-    branch: master
   skip_cleanup: true
+
 notifications:
   email:
     recipients:
