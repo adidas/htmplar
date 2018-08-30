@@ -14,7 +14,7 @@ deploy:
   email: uxteam@adidas-group.com
   api_key: $NPM_TOKEN
   on:
-    branch: master
+    tags: true
   skip_cleanup: true
 
 notifications:
