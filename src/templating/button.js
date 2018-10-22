@@ -1,6 +1,6 @@
 // button
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { setMedium, slugify, createID } from './utils';
@@ -55,27 +55,37 @@ const Button = (props) => {
               cellSpacing={ 0 }>
             <tr>
               <td className="htmplar-button-content htmplar-cell">
-                <a href={ href } className="htmplar-button-cta">
-                  {
-                    icon && icon.index === 0 ? (
-                      <Fragment>
-                        <span className="htmplar-button-icon">{ icon.component }</span>
-                        <span className="htmplar-button-spacer">&nbsp;</span>
-                      </Fragment>
-                    ) : ''
-                  }
-                  <span className="htmplar-button-text">
-                    { text }
-                  </span>
-                  {
-                    icon && icon.index === 1 ? (
-                      <Fragment>
-                        <span className="htmplar-button-spacer">&nbsp;</span>
-                        <span className="htmplar-button-icon">{ icon.component }</span>
-                      </Fragment>
-                    ) : ''
-                  }
-                </a>
+                <table>
+                  <tr>
+                    {
+                      icon && icon.index === 0 ? (
+                        <td>
+                          <a href={ href } className="htmplar-button-link">
+                            <span className="htmplar-button-icon">{ icon.component }</span>
+                          </a>
+                          <span className="htmplar-button-spacer">&nbsp;</span>
+                        </td>
+                      ) : ''
+                    }
+                    <td>
+                      <a href={ href } className="htmplar-button-link">
+                        <span className="htmplar-button-text">
+                          { text }
+                        </span>
+                      </a>
+                    </td>
+                    {
+                      icon && icon.index === 1 ? (
+                        <td>
+                          <span className="htmplar-button-spacer">&nbsp;</span>
+                          <a href={ href } className="htmplar-button-link">
+                            <span className="htmplar-button-icon">{ icon.component }</span>
+                          </a>
+                        </td>
+                      ) : ''
+                    }
+                  </tr>
+                </table>
               </td>
             </tr>
           </table>
