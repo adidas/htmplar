@@ -17,7 +17,7 @@ function _eval(file) {
   if (file) {
     const stream = [
       'import React from \'react\';',
-      `import Component from '${ path.join(process.cwd(), file) }';`
+      `import Component from '${ process.platform === 'win32' ? path.join(process.cwd(), file).replace(/\\/g, '\\\\') : path.join(process.cwd(), file) }';`
     ];
 
     if (file.includes('/block-')) {

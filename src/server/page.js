@@ -12,8 +12,8 @@ const pageData = {};
 const getPage = (fileData) => {
   if (fileData.dir !== sharedContent) {
     const fileDir = fileData.dir.split(output);
-    const href = fileDir[fileDir.length - 1];
-    const fileName = fileData.dir.split('/');
+    const href = process.platform === 'win32' ? fileDir[fileDir.length - 1].replace(/\\/g, '/') : fileDir[fileDir.length - 1];
+    const fileName = process.platform === 'win32' ? fileData.dir.split('\\') : fileData.dir.split('/');
     const pageName = fileName[fileName.length - 1].replace(/-/g, ' ');
 
     const programName = fileName[2] ? fileName[2].replace(/-/g, ' ') : '';
