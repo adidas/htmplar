@@ -135,9 +135,12 @@ a[x-apple-data-detectors] {
 
 }
 
+.htmplar-button-content > table {
+  width: 100%;
+}
+
 .htmplar-button-text,
-.htmplar-button-icon,
-.htmplar-button-spacer {
+.htmplar-button-icon {
   display: inline-block;
   text-decoration: none;
   vertical-align: middle;
@@ -162,6 +165,7 @@ a[x-apple-data-detectors] {
 
 .htmplar-button-icon .htmplar-image {
   vertical-align: middle;
+  max-width: initial;
 }
 
 .htmplar-all-caps,

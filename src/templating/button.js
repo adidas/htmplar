@@ -77,7 +77,6 @@ const Button = (props) => {
                     {
                       icon && icon.index === 1 ? (
                         <td align="right">
-                          <span className="htmplar-button-spacer">&nbsp;</span>
                           <a href={ href } className="htmplar-button-link">
                             <span className="htmplar-button-icon">{ icon.component }</span>
                           </a>
