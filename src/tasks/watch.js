@@ -6,19 +6,19 @@ const { config: { output, source, assets }, createCliArgs } = require('../utils'
 
 const watch = (linting) => {
   const exec = [
-    './node_modules/.bin/htmplar build',
-    './node_modules/.bin/htmplar serve'
+    'node ./node_modules/htmplar/src/cli/index.js build',
+    'node ./node_modules/htmplar/src/cli/index.js serve'
   ];
 
   if (typeof linting !== 'undefined' &&
       ((linting === true || Array.isArray(linting)) && linting[0] === true)) {
     const lintingArgs = Array.isArray(linting) ? createCliArgs(linting[1]) : '';
 
-    exec.unshift(`./node_modules/.bin/htmplar lint ${ lintingArgs }`);
+    exec.unshift(`node ./node_modules/htmplar/src/cli/index.js lint ${ lintingArgs }`);
   }
 
   nodemon({
-    exec: `node ${ exec.join(' && ') }`,
+    exec: `${ exec.join(' && ') }`,
     watch: [ path.join(process.cwd(), source), path.join(process.cwd(), output), path.join(process.cwd(), assets) ],
     ext: 'js, jsx, mjs, json, css, scss'
   });
