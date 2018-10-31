@@ -20,7 +20,9 @@ const Image = (props) => {
         return (
           <span key={ type }
               id={ `${ _id }-${ type }` }
-              className={ classNames('htmplar-image-container', className, `htmplar-image-container-${ type }`) }>
+              className={
+                classNames('htmplar-image-container', `${ className }-container`, `htmplar-image-container-${ type }`)
+              }>
             <img align={ align }
                 src={ url }
                 alt={ title }
