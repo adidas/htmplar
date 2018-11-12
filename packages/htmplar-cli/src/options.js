@@ -17,7 +17,9 @@ commander
   .description('renders the components to html files')
   .option('-s, --source [dir]', 'Path for the source files')
   .option('-o, --output [dir]', 'Path for the output files')
-  .action(() => { console.log('Building files') });
+  .action(() => {
+    logger.info('building files');
+  });
 
 commander
   .command('dev')
@@ -25,7 +27,9 @@ commander
   .description('start the local webserver the development mode')
   .option('-w, --watch [true|false]', 'Starts development mode with file watching which automatically renders with every changes')
   .option('-l, --lint [true|false]', 'Apply linting rules when a file change happens')
-  .action();
+  .action(() => {
+    logger.info('starting dev server');
+  });
 
 commander
   .command('serve')
