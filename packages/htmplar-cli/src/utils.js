@@ -1,15 +1,17 @@
 // cli utils
 
-import rc from 'rc';
-import defaultCfg from '../.htmplarrc.json';
+const rc = require('rc');
+const defaultCfg = require('../../../.htmplarrc.json');
 
-export const cfg = rc('htmplar', defaultCfg);
+const cfg = rc('htmplar', defaultCfg);
 
 const { log, info, warn, error } = console;
 
-export const logger = {
+const logger = {
   error,
   info,
   log,
   warn
 };
+
+module.exports = { logger, cfg };

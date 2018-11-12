@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { logger } from './utils';
-import cli from './options';
+const { logger } = require('./utils');
+const cli = require('./options');
 
 try {
   cli(process.argv);
