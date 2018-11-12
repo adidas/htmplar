@@ -25,7 +25,7 @@ commander
   .description('start the local webserver the development mode')
   .option('-w, --watch [true|false]', 'Starts development mode with file watching which automatically renders with every changes')
   .option('-l, --lint [true|false]', 'Apply linting rules when a file change happens')
-  .action(() => {});
+  .action();
 
 commander
   .command('serve')
