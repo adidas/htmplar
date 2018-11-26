@@ -58,7 +58,7 @@ const setPage = (pageData) => {
         }
       });
       const listItem =
-                `<li style="padding: 8px 16px 8px 8px; border-bottom: 1px solid #ddd;">
+        `<li style="padding: 8px 16px 8px 8px; border-bottom: 1px solid #ddd;">
                 <h3>${ program }</h3>
                 ${ items.join('') }
               </li>`;
@@ -94,4 +94,4 @@ walkSync(output).forEach((file) => {
 
 setPage(pageData);
 
-exports.pages = pages;
+export default pages;

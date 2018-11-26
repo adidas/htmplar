@@ -1,8 +1,8 @@
 
 // options
-
 const commander = require('commander');
 const pkg = require('../package.json');
+const { build, watch, lint } = require('../tasks');
 const { logger, cfg } = require('./utils');
 
 commander
@@ -19,6 +19,7 @@ commander
   .option('-o, --output [dir]', 'Path for the output files')
   .action(() => {
     logger.info('building files');
+    build();
   });
 
 commander
@@ -29,6 +30,7 @@ commander
   .option('-l, --lint [true|false]', 'Apply linting rules when a file change happens')
   .action(() => {
     logger.info('starting dev server');
+    watch();
   });
 
 commander
