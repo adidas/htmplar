@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { setMedium, slugify, createID } from './utils';
 
 const Button = (props) => {
-  const { href, children, id, isBlock, className, allCaps, medium } = props;
+  const { href, children, id, isBlock, className, allCaps, medium, align } = props;
   const availableIn = setMedium(medium);
 
   let items = children;
@@ -46,7 +46,8 @@ const Button = (props) => {
         border="0"
         cellPadding={ 0 }
         cellSpacing={ 0 }
-        id={ _id }>
+        id={ _id }
+        align={ align }>
       <tr>
         <td className="htmplar-button-container htmplar-cell">
           <table className={ classNames('htmplar-button-inner') }
@@ -114,7 +115,8 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.array,
     PropTypes.object
-  ])
+  ]),
+  align: PropTypes.string
 };
 
 export default Button;
