@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "index.js",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.46"
+    "@babel/cli": "^7.4.4"
   },
   "scripts": {
     "build": "babel src/templating --out-dir lib",
@@ -16,8 +16,8 @@
     "watch": "nodemon --watch src --exec 'yarn run lint && yarn run build'"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/preset-env": "^7.0.0-beta.46",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0-beta.46",
     "@babel/register": "^7.0.0-beta.46",
     "babel-eslint": "^7.2.3",

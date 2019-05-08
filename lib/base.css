@@ -22,11 +22,14 @@ table {
   border-collapse: collapse;
   mso-table-lspace: 0;
   mso-table-rspace: 0;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   display: block;
   margin: 0;
   padding: 0;
@@ -54,19 +57,19 @@ p {
   padding: 0;
 }
 
-p, a, li, td, blockquote {
+p,
+a,
+li,
+td,
+blockquote {
   mso-line-height-rule: exactly;
 }
 
-a[href^=tel], a[href^=sms] {
+a[href^=tel],
+a[href^=sms] {
   color: inherit;
   cursor: default;
   text-decoration: none;
-}
-
-p, a, li, td, body, table, blockquote {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
 a[x-apple-data-detectors] {
@@ -101,16 +104,10 @@ a[x-apple-data-detectors] {
 
 .htmplar-cell {
   mso-line-height-rule: exactly;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
 .htmplar-block {
   max-width: 100%;
-}
-
-.htmplar-block-inner {
-
 }
 
 .htmplar-button {
@@ -127,14 +124,6 @@ a[x-apple-data-detectors] {
   padding: 0;
 }
 
-.htmplar-button-inner {
-
-}
-
-.htmplar-button-content {
-
-}
-
 .htmplar-button-content > table {
   width: 100%;
 }
@@ -145,8 +134,6 @@ a[x-apple-data-detectors] {
   text-decoration: none;
   vertical-align: middle;
   mso-line-height-rule: exactly;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
 .htmplar-button-text {
@@ -231,7 +218,13 @@ a[x-apple-data-detectors] {
 }
 
 @media only screen and (max-width: 30em) {
-  body, table, td, p, a, li, blockquote {
+  body,
+  table,
+  td,
+  p,
+  a,
+  li,
+  blockquote {
     -webkit-text-size-adjust: none !important;
   }
 
