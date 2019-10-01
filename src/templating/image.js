@@ -57,8 +57,14 @@ Image.propTypes = {
   id: PropTypes.string,
   align: PropTypes.string,
   medium: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  height: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
