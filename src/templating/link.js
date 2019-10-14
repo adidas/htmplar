@@ -54,7 +54,8 @@ Link.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
-    PropTypes.array
+    PropTypes.array,
+    PropTypes.string
   ]),
   align: PropTypes.string,
   className: PropTypes.oneOfType([
