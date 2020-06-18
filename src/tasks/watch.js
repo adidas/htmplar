@@ -3,18 +3,18 @@
 const path = require('path');
 const nodemon = require('nodemon');
 const { config: { output, source, assets }, createCliArgs } = require('../utils');
-
+const cliPath = path.join(path.dirname(require.resolve("htmplar")), "src/cli/index.js")
 const watch = (linting) => {
   const exec = [
-    'node ./node_modules/htmplar/src/cli/index.js build',
-    'node ./node_modules/htmplar/src/cli/index.js serve'
+    `node ${cliPath} build`,
+    `node ${cliPath} serve`
   ];
 
   if (typeof linting !== 'undefined' &&
       ((linting === true || Array.isArray(linting)) && linting[0] === true)) {
     const lintingArgs = Array.isArray(linting) ? createCliArgs(linting[1]) : '';
 
-    exec.unshift(`node ./node_modules/htmplar/src/cli/index.js lint ${ lintingArgs }`);
+    exec.unshift(`node ${cliPath} lint ${lintingArgs}`);
   }
 
   nodemon({
