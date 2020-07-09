@@ -1,5 +1,5 @@
 <p style="width: 100%; padding: 100px; text-align: center;">
-  <img src="./.github/images/logo.png" width="250" align="right" alt="HTML Templar"/>
+  <img src="https://raw.githubusercontent.com/adidas/htmplar/master/.github/images/logo.png" width="250" align="right" alt="HTML Templar"/>
 </p>
 
 Templar
