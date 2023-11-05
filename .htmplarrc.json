@@ -18,5 +18,6 @@
       "exitOnError": true
     }
   ],
-  "defaultCss": false
+  "defaultCss": false,
+  "exclude":[]
 }
