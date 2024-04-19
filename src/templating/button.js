@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { setMedium, slugify, createID } from './utils';
 
-const Button = (props) => {
+const Button = props => {
   const { href, children, id, isBlock, className, allCaps, medium, align } = props;
   const availableIn = setMedium(medium);
 
@@ -14,7 +14,7 @@ const Button = (props) => {
   let text;
 
   if (typeof children === 'string') {
-    items = [ items ];
+    items = [items];
   }
 
   items.forEach((child, index) => {
@@ -32,58 +32,44 @@ const Button = (props) => {
   const _id = id === '' ? slugify(text || createID(props)) : id;
 
   return (
-    <table className={
-          classNames(
-            'htmplar-button',
-            className,
-            availableIn,
-            {
-              'htmplar-all-caps': allCaps,
-              'htmplar-button-block': isBlock
-            }
-          )
-        }
-        border="0"
-        cellPadding={ 0 }
-        cellSpacing={ 0 }
-        id={ _id }
-        align={ align }>
+    <table
+      className={classNames('htmplar-button', className, availableIn, {
+        'htmplar-all-caps': allCaps,
+        'htmplar-button-block': isBlock
+      })}
+      border="0"
+      cellPadding={0}
+      cellSpacing={0}
+      id={_id}
+      align={align}
+    >
       <tr>
         <td className="htmplar-button-container htmplar-cell">
-          <table className={ classNames('htmplar-button-inner') }
-              border="0"
-              cellPadding={ 0 }
-              cellSpacing={ 0 }>
+          <table className={classNames('htmplar-button-inner')} border="0" cellPadding={0} cellSpacing={0}>
             <tr>
               <td className="htmplar-button-content htmplar-cell">
                 <table>
                   <tr>
-                    {
-                      icon && icon.index === 0 ? (
-                        <td align="left">
-                          <a href={ href } className="htmplar-button-link">
-                            <span className="htmplar-button-icon">{ icon.component }</span>
-                          </a>
-                          <span className="htmplar-button-spacer">&nbsp;</span>
-                        </td>
-                      ) : ''
-                    }
+                    {icon && icon.index === 0 ?
+                      <td align="left">
+                        <a href={href} className="htmplar-button-link">
+                          <span className="htmplar-button-icon">{icon.component}</span>
+                        </a>
+                        <span className="htmplar-button-spacer">&nbsp;</span>
+                      </td>
+                    : ''}
                     <td>
-                      <a href={ href } className="htmplar-button-link">
-                        <span className="htmplar-button-text">
-                          { text }
-                        </span>
+                      <a href={href} className="htmplar-button-link">
+                        <span className="htmplar-button-text">{text}</span>
                       </a>
                     </td>
-                    {
-                      icon && icon.index === 1 ? (
-                        <td align="right">
-                          <a href={ href } className="htmplar-button-link">
-                            <span className="htmplar-button-icon">{ icon.component }</span>
-                          </a>
-                        </td>
-                      ) : ''
-                    }
+                    {icon && icon.index === 1 ?
+                      <td align="right">
+                        <a href={href} className="htmplar-button-link">
+                          <span className="htmplar-button-icon">{icon.component}</span>
+                        </a>
+                      </td>
+                    : ''}
                   </tr>
                 </table>
               </td>
@@ -103,19 +89,12 @@ Button.defaultProps = {
 
 Button.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   id: PropTypes.string,
   medium: PropTypes.string,
   isBlock: PropTypes.bool,
   allCaps: PropTypes.bool,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object
-  ]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   align: PropTypes.string
 };
 

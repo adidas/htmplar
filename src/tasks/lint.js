@@ -2,12 +2,14 @@
 
 const { CLIEngine } = require('eslint');
 const defaultLinting = require('../../lib/eslint-defaults');
-const { logger: { log, warn, info } } = require('../utils');
+const {
+  logger: { log, warn, info }
+} = require('../utils');
 
 const lint = (source, cliOptions) => {
   const options = {
     baseConfig: defaultLinting,
-    envs: [ 'browser' ],
+    envs: ['browser'],
     fix: true
   };
 
@@ -23,7 +25,7 @@ const lint = (source, cliOptions) => {
 
   const cli = new CLIEngine(options);
 
-  const report = cli.executeOnFiles([ source ]);
+  const report = cli.executeOnFiles([source]);
   const formatter = CLIEngine.getFormatter();
 
   log(formatter(report.results));

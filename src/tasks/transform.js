@@ -5,10 +5,7 @@ const babel = require('@babel/core');
 const pretty = require('pretty');
 
 require('@babel/register')({
-  presets: [
-    '@babel/preset-env',
-    '@babel/preset-react'
-  ]
+  presets: ['@babel/preset-env', '@babel/preset-react']
 });
 
 function _eval(file) {
@@ -16,24 +13,21 @@ function _eval(file) {
 
   if (file) {
     const stream = [
-      'import React from \'react\';',
-      `import Component from '${ process.platform === 'win32' ? path.join(process.cwd(), file).replace(/\\/g, '\\\\') : path.join(process.cwd(), file) }';`
+      "import React from 'react';",
+      `import Component from '${process.platform === 'win32' ? path.join(process.cwd(), file).replace(/\\/g, '\\\\') : path.join(process.cwd(), file)}';`
     ];
 
     if (file.includes('/block-')) {
-      stream.push('import {contentBlock, getBaseStyles} from \'htmplar\';');
+      stream.push("import {contentBlock, getBaseStyles} from 'htmplar';");
       stream.push('contentBlock(getBaseStyles)(Component);');
     } else {
-      stream.push('import {template, getBaseStyles} from \'htmplar\';');
+      stream.push("import {template, getBaseStyles} from 'htmplar';");
       stream.push('template(getBaseStyles)(Component);');
     }
 
     const { code } = babel.transform(stream.join('\n'), {
       filename: file,
-      presets: [
-        '@babel/preset-env',
-        '@babel/preset-react'
-      ]
+      presets: ['@babel/preset-env', '@babel/preset-react']
     });
 
     result = vm.runInThisContext(code, {
@@ -44,7 +38,7 @@ function _eval(file) {
   return result;
 }
 
-const transform = (file) => {
+const transform = file => {
   global.__filename = file;
   global.__dirname = process.cwd();
 

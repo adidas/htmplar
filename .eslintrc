@@ -1,11 +1,13 @@
 {
-  "extends": [
-    "adidas-es8",
-    "adidas-env/node",
-    "adidas-babel",
-    "adidas-react"
-  ],
+  "extends": ["adidas-es8", "adidas-env/node", "adidas-babel", "adidas-react", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "rules": {
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["alias"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

@@ -8,7 +8,7 @@ const replaceAll = (str, target, replacement) => {
   let _str = str;
 
   if (Array.isArray(target) && typeof replacement === 'undefined') {
-    target.forEach((item) => {
+    target.forEach(item => {
       _str = _str.replace(new RegExp(item[0], 'g'), item[1]);
     });
   } else {
@@ -18,16 +18,13 @@ const replaceAll = (str, target, replacement) => {
   return _str;
 };
 
-const render = (Component) => {
+const render = Component => {
   const sheet = new ServerStyleSheet();
-  const renderedComponent = replaceAll(
-    renderToStaticMarkup(sheet.collectStyles(<Component />)),
-    [
-      [ '&lt;', '<' ],
-      [ '&gt;', '>' ],
-      [ '=&quot;([a-zA-Z0-9;:\\-.\\/\\(\\)]+)&quot;', '="$1"' ]
-    ]
-  );
+  const renderedComponent = replaceAll(renderToStaticMarkup(sheet.collectStyles(<Component />)), [
+    ['&lt;', '<'],
+    ['&gt;', '>'],
+    ['=&quot;([a-zA-Z0-9;:\\-.\\/\\(\\)]+)&quot;', '="$1"']
+  ]);
   const renderedStyles = sheet.getStyleTags();
 
   return {
@@ -36,13 +33,13 @@ const render = (Component) => {
   };
 };
 
-const template = (baseStyles) => (SingleTemplate) => {
+const template = baseStyles => SingleTemplate => {
   const { renderedComponent: body, renderedStyles: styles } = render(SingleTemplate);
 
   return templateHtml(body, styles, baseStyles);
 };
 
-const contentBlock = (baseStyles) => (SingleBlock) => {
+const contentBlock = baseStyles => SingleBlock => {
   const { renderedComponent: body, renderedStyles: styles } = render(SingleBlock);
 
   return blockHtml(body, styles, baseStyles);
@@ -66,19 +63,19 @@ const templateHtml = (body, styles, baseStyles) => {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style id="base-styles">
-          ${ _styles.defaultStyles }
+          ${_styles.defaultStyles}
         </style>
         <style id="template-styles">
-          ${ _styles.templateStyles }
+          ${_styles.templateStyles}
         </style>
-        ${ styles }
+        ${styles}
       </head>
       <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
         <center>
           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" id="body">
             <tr>
               <td class="center" align="center" valign="top">
-                ${ body }
+                ${body}
               </td>
             </tr>
           </table>
@@ -93,17 +90,14 @@ const blockHtml = (body, styles, baseStyles) => {
 
   return `
     <style class="base-styles">
-      ${ _styles.defaultStyles }
+      ${_styles.defaultStyles}
     </style>
     <style class="template-styles">
-      ${ _styles.templateStyles }
+      ${_styles.templateStyles}
     </style>
-    ${ styles }
-    ${ body }
+    ${styles}
+    ${body}
   `;
 };
 
-export {
-  template,
-  contentBlock
-};
+export { template, contentBlock };

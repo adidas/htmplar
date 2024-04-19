@@ -6,11 +6,11 @@ const inlineCSS = require('inline-css');
 const { info, error } = require('./log');
 const { logs, block } = require('./config');
 
-const createPath = (dir) => {
+const createPath = dir => {
   const folders = dir.split(path.sep);
 
   folders.reduce((currentPath, folder) => {
-    const folderPath = `${ currentPath }${ folder }${ path.sep }`;
+    const folderPath = `${currentPath}${folder}${path.sep}`;
 
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath);
@@ -32,7 +32,7 @@ const store = async (content, options) => {
     inline = await inlineCSS(content, { url: '/', removeStyleTags: false });
   }
 
-  fs.writeFile(savePath, inline, (err) => {
+  fs.writeFile(savePath, inline, err => {
     if (err) {
       error(err);
     }
