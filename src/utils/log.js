@@ -6,9 +6,9 @@ const { logs: showLogs } = require('./config');
 
 // eslint-disable-next-line
 const logs = [
-  { name: 'info', message: [ chalk.blue('info') ] },
-  { name: 'success', message: [ '🎉', chalk.green('success') ] },
-  { name: 'error', message: [ chalk.red('error') ] }
+  { name: 'info', message: [chalk.blue('info')] },
+  { name: 'success', message: ['🎉', chalk.green('success')] },
+  { name: 'error', message: [chalk.red('error')] }
 ];
 
 const log = (...args) => {
@@ -16,7 +16,7 @@ const log = (...args) => {
     return;
   }
   // eslint-disable-next-line
-    console.log(...args);
+  console.log(...args);
 };
 
 const info = (...message) => {
@@ -36,11 +36,7 @@ const warn = (...message) => {
 };
 
 const welcome = () => {
-  log(
-    chalk.yellow(
-      figlet.textSync('htmplar', { horizontalLayout: 'full' })
-    )
-  );
+  log(chalk.yellow(figlet.textSync('htmplar', { horizontalLayout: 'full' })));
 };
 
 module.exports = {

@@ -1,0 +1,17 @@
+node_modules
+yarn-error.log
+secrets/*
+!secrets/README.md
+*/test/results/
+.env
+fh-query-results
+.vscode
+*/**/dist
+*/**/migrations
+*.yaml
+*.yml
+*.csv
+*.xls
+*.xlsx
+*/**/features
+*.md

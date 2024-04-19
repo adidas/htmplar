@@ -2,7 +2,9 @@
 
 const path = require('path');
 const express = require('express');
-const { config: { output, assets, server } } = require('../utils');
+const {
+  config: { output, assets, server }
+} = require('../utils');
 const pages = require('./page');
 
 const PORT = 3000;
@@ -27,7 +29,7 @@ const start = () => {
           </h1>
           <ul style="list-style-type: none; padding: 0; margin: 0"
               class="htmplar-landing-page-pages-list">
-            ${ pages.join('\n') }
+            ${pages.join('\n')}
           </ul>
         </div>
       </div>
