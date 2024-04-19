@@ -13,7 +13,8 @@
     "build": "babel src/templating --out-dir lib",
     "lint": "eslint index.js src/**/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "watch": "nodemon --watch src --exec 'npm run lint && npm run build'"
+    "watch": "nodemon --watch src --exec 'npm run lint && npm run build'",
+    "publish": "npm publish --access public"
   },
   "preferGlobal": true,
   "bin": {
