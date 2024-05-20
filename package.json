@@ -2,7 +2,10 @@
   "name": "htmplar",
   "description": "Developer friendly email development with React",
   "version": "0.4.1",
-  "repository": "https://github.com/adidas/htmplar.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adidas/htmplar.git"
+  },
   "author": "Bilal Çınarlı <bcinarli@gmail.com>",
   "contributers": [
     "Berkan Dirim <berkandirim@gmail.com>"
@@ -18,7 +21,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "htmplar": "./src/cli/index.js"
+    "htmplar": "src/cli/index.js"
   },
   "publishConfig": {
     "access": "public"
