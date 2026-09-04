@@ -1,0 +1,131 @@
+name: Manual Publish to npm
+
+# This workflow is manually triggered from GitHub Actions UI
+# Use this for controlled releases when you want to publish manually
+on:
+  workflow_dispatch:
+    inputs:
+      version-bump:
+        description: 'Version bump type (leave empty to use existing versions)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - patch
+          - minor
+          - major
+          - prerelease
+        default: ''
+      npm-tag:
+        description: 'npm dist-tag'
+        required: true
+        type: choice
+        options:
+          - latest
+          - alpha
+          - beta
+          - next
+        default: 'alpha'
+      dry-run:
+        description: 'Dry run (test without actually publishing)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    name: Publish packages to npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Bump versions (if specified)
+        if: inputs.version-bump != ''
+        run: |
+          cd packages/core && npm version ${{ inputs.version-bump }} --no-git-tag-version
+          cd ../renderer && npm version ${{ inputs.version-bump }} --no-git-tag-version
+          cd ../cli && npm version ${{ inputs.version-bump }} --no-git-tag-version
+          cd ../create-htmplar && npm version ${{ inputs.version-bump }} --no-git-tag-version
+
+      - name: Publish to npm (dry-run)
+        if: inputs.dry-run == true
+        run: |
+          echo "🔍 DRY RUN - Would publish with tag: ${{ inputs.npm-tag }}"
+          npm publish --dry-run --workspaces --tag ${{ inputs.npm-tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Publish to npm
+        if: inputs.dry-run == false
+        run: |
+          echo "📦 Publishing packages with tag: ${{ inputs.npm-tag }}"
+          npm publish --workspaces --access public --tag ${{ inputs.npm-tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Commit version changes
+        if: inputs.version-bump != '' && inputs.dry-run == false
+        run: |
+          git add packages/*/package.json
+          git commit -m "chore: bump versions to ${{ inputs.version-bump }}" || echo "No changes to commit"
+          git push
+
+      - name: Create GitHub Release
+        if: inputs.dry-run == false && inputs.npm-tag == 'latest'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.get-version.outputs.version }}
+          release_name: Release v${{ steps.get-version.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Summary
+        run: |
+          echo "## 🚀 Publish Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **npm tag**: \`${{ inputs.npm-tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version bump**: \`${{ inputs.version-bump || 'none' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dry run**: \`${{ inputs.dry-run }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ inputs.dry-run }}" = "false" ]; then
+            echo "✅ Packages published successfully!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Install with:" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+            echo "npm install @htmplar/core@${{ inputs.npm-tag }}" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "🔍 Dry run completed - no packages were published" >> $GITHUB_STEP_SUMMARY
+          fi

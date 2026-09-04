@@ -1,0 +1,47 @@
+{
+  "name": "@adidas/htmplar-renderer",
+  "version": "2.0.0-alpha.0",
+  "description": "Email rendering engine for HTMplar",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@adidas/htmplar-core": "*",
+    "html-minifier-terser": "^7.2.0",
+    "juice": "^10.0.1",
+    "posthtml": "^0.16.6",
+    "posthtml-inline-css": "^1.0.3",
+    "pretty": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

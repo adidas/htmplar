@@ -1,0 +1,12 @@
+{
+  "name": "htmplar-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx welcome-email.tsx > output.html"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  }
+}
