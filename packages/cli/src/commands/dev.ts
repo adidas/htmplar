@@ -24,7 +24,10 @@ export async function startDevServer(options: DevOptions) {
       resolve: {
         alias: {
           '@adidas/htmplar-core': path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-core'),
-          '@adidas/htmplar-renderer': path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-renderer'),
+          '@adidas/htmplar-renderer': path.resolve(
+            process.cwd(),
+            'node_modules/@adidas/htmplar-renderer'
+          ),
         },
       },
     });
