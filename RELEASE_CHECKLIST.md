@@ -48,52 +48,38 @@ git push origin rewrite/monorepo-setup
 - Get review/approval (if needed)
 - Merge PR to `adidas/htmplar`
 
-### Step 4: Setup npm Token
+### Step 4: Verify Trusted Publishing Setup
 
-**Only needs to be done once:**
+**✅ Already configured by @adidas npm admin!**
 
-1. **Generate npm token**:
-   ```bash
-   # Login to npm (if not already)
-   npm login
-   ```
-   
-2. **Go to**: https://www.npmjs.com/settings/YOUR_USERNAME/tokens
+No npm tokens needed - the repository uses **Trusted Publishing (OIDC)**.
 
-3. **Create "Automation" token**
-   - Click "Generate New Token"
-   - Select "Automation" type
-   - Copy the token (starts with `npm_...`)
+**Verify it's working:**
+- Check workflow file has `id-token: write` permission
+- Check `.github/workflows/publish.yml` exists
+- Confirm you have write access to adidas/htmplar repo
 
-4. **Add to GitHub**:
-   - Go to: https://github.com/adidas/htmplar/settings/secrets/actions
-   - Click "New repository secret"
-   - Name: `NPM_TOKEN`
-   - Value: Paste your token
-   - Save
+### Step 5: Publish to npm
 
-### Step 5: Publish to npm (TEST FIRST)
+**Option A: Create GitHub Release (Recommended)**
 
-1. **Go to GitHub Actions**:
-   - Repository: `adidas/htmplar`
-   - URL: https://github.com/adidas/htmplar/actions
+1. **Go to Releases**: https://github.com/adidas/htmplar/releases/new
+2. **Create release**:
+   - Tag: `v2.0.0-alpha.0`
+   - Title: "v2.0.0-alpha.0 - HTMplar TypeScript Rewrite"
+   - Description: Copy from CHANGELOG.md
+   - Check "This is a pre-release"
+   - Click "Publish release"
+3. **Workflow automatically triggers** and publishes
 
-2. **Select "Manual Publish to npm"**
+**Option B: Manual Trigger**
 
-3. **Run workflow (DRY RUN)**:
-   - Branch: `master` (or wherever you merged)
-   - Version bump: (leave empty - already 2.0.0-alpha.0)
-   - npm tag: `alpha`
-   - **Dry run: `true`** ✅
-
-4. **Check output**:
-   - Review what packages would be published
-   - Verify versions are correct
-   - Check for any errors
-
-5. **Run workflow (REAL PUBLISH)**:
-   - Same settings, but:
-   - **Dry run: `false`** ✅
+1. **Go to Actions**: https://github.com/adidas/htmplar/actions
+2. **Select**: "Publish to npm"
+3. **Run workflow**:
+   - Branch: `master`
+   - npm dist-tag: `alpha`
+4. **Click**: "Run workflow"
 
 ### Step 6: Verify Published Packages
 
