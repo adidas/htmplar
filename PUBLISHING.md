@@ -1,286 +1,226 @@
 # Publishing Guide
 
-This document explains how to publish HTMplar packages to npm using GitHub Actions.
+This document explains how to publish HTMplar packages to npm using GitHub Actions with Trusted Publishing (OIDC).
 
-## 🎯 Publishing Methods
+## 🔐 Authentication: Trusted Publishing (OIDC)
 
-We have two GitHub Actions workflows for publishing:
+### ✅ Already Configured!
 
-### 1. **Manual Publish** (Recommended) 🎮
+This repository uses **npm Trusted Publishing** with GitHub OIDC configured by the @adidas npm organization admin.
 
-**File**: `.github/workflows/manual-publish.yml`
+**What this means:**
+- ✅ No npm tokens needed
+- ✅ More secure than token-based auth
+- ✅ Automatic authentication via GitHub identity
+- ✅ Cryptographic provenance (proof packages came from this repo)
 
-**Trigger**: Manual from GitHub UI
+**How it works:**
+1. GitHub provides an OIDC token proving the workflow's identity
+2. npm verifies the token against trusted publisher configuration
+3. Packages published with provenance signatures
+4. Users can verify packages came from official adidas/htmplar repo
 
-**Best for**:
-- Controlled releases
-- Alpha/beta releases
-- Testing with dry-run
-- Quick version bumps
+## 🚀 How to Publish
 
-**How to use**:
+### Method 1: GitHub Release (Recommended)
 
-1. Go to GitHub Actions tab
-2. Select "Manual Publish to npm"
-3. Click "Run workflow"
-4. Choose options:
-   - **Version bump**: patch/minor/major/prerelease (or leave empty)
-   - **npm tag**: latest/alpha/beta/next
-   - **Dry run**: Test without publishing
+**Best for:** Official releases, version milestones
 
-### 2. **Automatic Publish with Changesets** 📦
+1. **Go to Releases**
+   - https://github.com/adidas/htmplar/releases/new
 
-**File**: `.github/workflows/publish.yml`
+2. **Create Release**
+   - **Tag**: `v2.0.0-alpha.0` (or your version)
+   - **Title**: `v2.0.0-alpha.0`
+   - **Description**: Copy from CHANGELOG.md
+   - **Pre-release**: Check this for alpha/beta versions
+   - Click **"Publish release"**
 
-**Trigger**: 
-- Push to master/main branch with changesets
-- Manual trigger with release type
+3. **Automatic Publishing**
+   - Workflow automatically triggers
+   - Builds all packages
+   - Publishes to npm with provenance
+   - Check: https://github.com/adidas/htmplar/actions
 
-**Best for**:
-- Production releases
-- Following semver strictly
-- Team coordination
+### Method 2: Manual Trigger
 
-## 🔐 Setup: npm Token & Organization Access
+**Best for:** Quick publishes, testing, specific npm tags
 
-### Prerequisites: @adidas npm Organization Membership
+1. **Go to Actions**
+   - https://github.com/adidas/htmplar/actions
+   - Select "Publish to npm"
 
-**IMPORTANT**: Before publishing, you need to be a member of the `@adidas` npm organization.
+2. **Run Workflow**
+   - Click "Run workflow"
+   - **Branch**: `master`
+   - **npm dist-tag**: Choose:
+     - `alpha` - Early development (default)
+     - `beta` - Feature complete, testing
+     - `next` - Pre-release
+     - `latest` - Stable production
+   - Click "Run workflow"
 
-#### Check Your Membership
+3. **Monitor**
+   - Watch the workflow run
+   - Check summary for published packages
 
-```bash
-npm org ls adidas --json | jq '.[] | select(.user == "YOUR_NPM_USERNAME")'
-```
+## 📦 What Gets Published
 
-If you see your username, you're good! If not, you need to be added.
+All 4 packages are published simultaneously:
 
-#### Request Access
+| Package | Description |
+|---------|-------------|
+| `@adidas/htmplar-core` | React components for emails |
+| `@adidas/htmplar-renderer` | Server-side rendering engine |
+| `@adidas/htmplar-cli` | Command-line interface |
+| `@adidas/create-htmplar` | Project scaffolder |
 
-An existing `@adidas` npm organization admin needs to add you:
-
-```bash
-# Admin runs this command:
-npm org add adidas YOUR_NPM_USERNAME --role developer
-```
-
-**Roles**:
-- `developer` - Can publish packages (recommended for contributors)
-- `admin` - Can manage members and settings
-- `owner` - Full control
-
-If you don't have access, contact:
-- Repository maintainers
-- adidas npm organization admins
-- Check who has access: `npm org ls adidas`
-
----
-
-### Creating npm Access Token
-
-1. **Login to npmjs.com**
-   ```bash
-   npm login
-   ```
-
-2. **Generate Access Token**
-   - Go to https://www.npmjs.com/settings/YOUR_USERNAME/tokens
-   - Click "Generate New Token"
-   - Choose "Automation" (for CI/CD)
-   - Copy the token (starts with `npm_...`)
-
-3. **Add to GitHub Secrets**
-   
-   **For your fork** (berkandirim/htmplar):
-   - Go to: https://github.com/berkandirim/htmplar/settings/secrets/actions
-   - Click "New repository secret"
-   - Name: `NPM_TOKEN`
-   - Value: Paste your token
-   - Click "Add secret"
-
-   **For upstream** (adidas/htmplar):
-   - Same process, but in adidas/htmplar repository
-   - Requires admin access to adidas org
-
-### Token Permissions
-
-The npm token needs:
-- ✅ Publish access to `@adidas/*` packages (as member of @adidas org)
-- ✅ Automation type (recommended for CI/CD)
-
-## 📋 Publishing Workflows
-
-### Quick Alpha Release
-
-Use this for the current v2.0.0-alpha release:
-
-1. **Merge PR** to master in adidas/htmplar
-2. **Go to Actions** → "Manual Publish to npm"
-3. **Run workflow** with:
-   - Version bump: (leave empty)
-   - npm tag: `alpha`
-   - Dry run: `false`
-4. **Done!** Packages published as `@adidas/htmplar-core@2.0.0-alpha.0`
-
-Users can install with:
-```bash
-npm install @adidas/htmplar-core@alpha
-```
-
-### Test Before Publishing (Dry Run)
-
-Always recommended for first-time:
-
-1. **Run workflow** with:
-   - Version bump: (leave empty)
-   - npm tag: `alpha`
-   - Dry run: `true` ✅
-2. **Check logs** - see what would happen
-3. **Run again** with `Dry run: false` if everything looks good
-
-### Bump Version and Publish
-
-When ready for beta/RC/stable:
-
-1. **Run workflow** with:
-   - Version bump: `patch` (or `minor`/`major`)
-   - npm tag: `beta` (or `latest` for stable)
-   - Dry run: `false`
-
-This will:
-- Bump all package versions
-- Publish to npm with specified tag
-- Commit version changes back to repo
+**Current version:** `2.0.0-alpha.0`
 
 ## 🏷️ npm Tags Explained
 
 | Tag | When to Use | Install Command |
 |-----|-------------|-----------------|
-| `alpha` | Early development, unstable | `npm i @adidas/htmplar-core@alpha` |
-| `beta` | Feature complete, testing | `npm i @adidas/htmplar-core@beta` |
-| `next` | Pre-release for testing | `npm i @adidas/htmplar-core@next` |
+| `alpha` | Early development, unstable API | `npm i @adidas/htmplar-core@alpha` |
+| `beta` | Feature complete, testing phase | `npm i @adidas/htmplar-core@beta` |
+| `next` | Pre-release, near stable | `npm i @adidas/htmplar-core@next` |
 | `latest` | Stable production release | `npm i @adidas/htmplar-core` |
 
-**Current Status**: v2.0.0-alpha.0 → Use `alpha` tag
+## ✅ After Publishing
 
-## 🔄 Development Workflow
+### Verify Packages
 
-### Fork + PR Model
-
-```bash
-# 1. Work in your fork
-git checkout -b feature/my-feature
-# ... make changes ...
-git push origin feature/my-feature
-
-# 2. Create PR to adidas/htmplar
-# Use GitHub UI
-
-# 3. After PR is merged to adidas/htmplar
-# Trigger publish from adidas/htmplar Actions tab
-```
-
-### Important Notes
-
-- ⚠️ **Publish from adidas/htmplar**, not your fork
-- ⚠️ npm packages should come from official org repo
-- ⚠️ Always test with dry-run first
-- ⚠️ Keep your fork synced after publish:
-  ```bash
-  git fetch upstream
-  git merge upstream/master
-  git push origin master
-  ```
-
-## 📊 Checking Published Packages
-
-After publishing:
+Check packages are live on npm:
 
 ```bash
-# Check if packages are live
 npm view @adidas/htmplar-core
 npm view @adidas/htmplar-renderer
 npm view @adidas/htmplar-cli
 npm view @adidas/create-htmplar
-
-# Check specific version
-npm view @adidas/htmplar-core@alpha
-
-# Test installation
-mkdir test-project && cd test-project
-npm init -y
-npm install @adidas/htmplar-core@alpha
 ```
+
+### Test Installation
+
+```bash
+# Create test project
+mkdir test-htmplar && cd test-htmplar
+npm init -y
+
+# Install packages
+npm install @adidas/htmplar-core@alpha @adidas/htmplar-renderer@alpha
+
+# Test CLI
+npx @adidas/create-htmplar test-project
+```
+
+### Verify Provenance
+
+Check the provenance signature (proof of origin):
+
+1. Go to: https://www.npmjs.com/package/@adidas/htmplar-core
+2. Look for "Provenance" badge
+3. Click to see build details from GitHub Actions
 
 ## 🐛 Troubleshooting
 
-### "ENEEDAUTH" Error
+### "Workflow not found"
 
+**Fix:** Make sure you're in the `adidas/htmplar` repo, not your fork.
+
+### "Permission denied" during publish
+
+**Possible causes:**
+1. Not running from `adidas/htmplar` (must be upstream, not fork)
+2. Trusted publishing not configured for this repo
+3. Running from wrong branch
+
+**Fix:** Contact @adidas npm org admin to verify trusted publishing setup.
+
+### Packages not appearing on npm
+
+**Wait time:** npm CDN takes 1-2 minutes to update globally.
+
+**Check:**
+- Workflow completed successfully
+- No errors in workflow logs
+- Search directly: https://www.npmjs.com/package/@adidas/htmplar-core
+
+### Publishing to wrong tag
+
+**Fix:** Tags can be updated after publishing:
+
+```bash
+# Move a version to different tag
+npm dist-tag add @adidas/htmplar-core@2.0.0-alpha.0 beta
+
+# Remove from wrong tag
+npm dist-tag rm @adidas/htmplar-core alpha
 ```
-npm error code ENEEDAUTH
-npm error need auth This command requires you to be logged in.
-```
 
-**Fix**: Add `NPM_TOKEN` secret to GitHub repository settings
+## 📋 Pre-Publish Checklist
 
-### "403 Forbidden" Error
+Before publishing:
 
-```
-npm error 403 Forbidden - PUT https://registry.npmjs.org/@adidas/htmplar-core
-```
-
-**Fixes**:
-1. Check npm token has publish permissions
-2. Verify you have access to `@htmplar` scope on npm
-3. Make sure `publishConfig.access: "public"` is set in package.json
-
-### "Package name not available" Error
-
-```
-npm error 404 '@adidas/htmplar-core' is not in the npm registry.
-```
-
-**Fix**: Package names are available! This is just a check. Proceed with publish.
-
-### Packages Not Appearing
-
-After publishing, wait 1-2 minutes for npm's CDN to update. Check:
-- https://www.npmjs.com/package/@adidas/htmplar-core
-- https://www.npmjs.com/package/@adidas/htmplar-renderer
-- https://www.npmjs.com/package/@adidas/htmplar-cli
-- https://www.npmjs.com/package/@adidas/create-htmplar
+- [ ] All tests passing locally
+- [ ] CI checks passing on GitHub
+- [ ] Version number updated in package.json files
+- [ ] CHANGELOG.md updated with release notes
+- [ ] README.md reflects current state
+- [ ] Built packages locally: `npm run build`
+- [ ] Tested scaffolding: `node packages/cli/dist/bin.mjs init test`
 
 ## 🎓 Best Practices
 
-1. **Always use dry-run first** when testing new workflows
-2. **Publish alpha/beta** before stable releases
-3. **Test installed packages** before announcing releases
-4. **Use semantic versioning**:
-   - `patch`: Bug fixes (2.0.0 → 2.0.1)
-   - `minor`: New features (2.0.0 → 2.1.0)
-   - `major`: Breaking changes (2.0.0 → 3.0.0)
-5. **Document changes** in CHANGELOG.md
-6. **Tag releases** in GitHub for major versions
+1. **Use GitHub Releases for versions**
+   - Creates git tags automatically
+   - Generates release notes
+   - Triggers publish workflow
+   - Better visibility for users
 
-## 📝 Checklist: First Release
+2. **Test with alpha first**
+   - Publish as `alpha` initially
+   - Test installation and usage
+   - Promote to `beta` → `latest` when stable
 
-- [x] Code complete and tested locally
-- [x] All CI checks passing
-- [x] README has migration guide
-- [ ] Push commits to GitHub
-- [ ] Create npm account (if needed)
-- [ ] Generate npm access token
-- [ ] Add `NPM_TOKEN` to GitHub secrets
-- [ ] Run workflow with dry-run: true
-- [ ] Review dry-run output
-- [ ] Run workflow with dry-run: false
-- [ ] Verify packages on npmjs.com
-- [ ] Test installation locally
-- [ ] Announce release! 🎉
+3. **Semantic Versioning**
+   - `patch` (2.0.1): Bug fixes
+   - `minor` (2.1.0): New features, backward compatible
+   - `major` (3.0.0): Breaking changes
+
+4. **Document changes**
+   - Update CHANGELOG.md before publishing
+   - Clear release notes in GitHub Release
+   - Mention breaking changes prominently
+
+5. **Announce releases**
+   - Post in team channels
+   - Update project README
+   - Social media for major versions
+
+## 🔒 Security Notes
+
+**Trusted Publishing Benefits:**
+- ✅ No long-lived tokens to leak
+- ✅ Cannot be used outside GitHub Actions
+- ✅ Scoped to specific repository
+- ✅ Automatic expiration after workflow
+- ✅ Provenance proves package origin
+
+**What this prevents:**
+- ❌ Token theft from developer machines
+- ❌ Credential leaks in logs
+- ❌ Unauthorized publishes from other repos
+- ❌ Supply chain attacks
 
 ## 🆘 Need Help?
 
-- npm registry status: https://status.npmjs.org/
-- npm docs: https://docs.npmjs.com/
-- GitHub Actions docs: https://docs.github.com/en/actions
-- Open an issue: https://github.com/adidas/htmplar/issues
+- **Workflow issues**: Check GitHub Actions logs
+- **npm errors**: See Troubleshooting section above
+- **Trusted publishing**: Contact @adidas npm org admin
+- **General questions**: Open an issue
+
+## 📚 Resources
+
+- npm Trusted Publishing: https://docs.npmjs.com/generating-provenance-statements
+- GitHub OIDC: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+- Package provenance: https://github.blog/2023-04-19-introducing-npm-package-provenance/
