@@ -1,0 +1,29 @@
+# Code Owners for adidas/htmplar
+# These owners will be automatically requested for review when someone opens a PR
+
+# Default owners for everything in the repo
+* @berkandirim
+
+# Package-specific owners
+/packages/core/ @berkandirim
+/packages/renderer/ @berkandirim
+/packages/cli/ @berkandirim
+/packages/create-htmplar/ @berkandirim
+
+# Configuration and workflows (require extra scrutiny)
+/.github/ @berkandirim
+/package.json @berkandirim
+/turbo.json @berkandirim
+
+# Documentation
+/docs/ @berkandirim
+*.md @berkandirim
+
+# CI/CD (critical)
+/.github/workflows/ @berkandirim
+
+# Publishing configuration (very sensitive)
+/.github/workflows/publish.yml @berkandirim
+
+# Security-sensitive files
+/package-lock.json @berkandirim
