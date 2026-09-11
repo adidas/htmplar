@@ -25,6 +25,7 @@ jobs:
   publish:
     name: Build and Publish to npm
     runs-on: ubuntu-latest
+    environment: pro # Required: matches npm trusted publishing config
     permissions:
       contents: read
       id-token: write # Required for Trusted Publishing (OIDC)
