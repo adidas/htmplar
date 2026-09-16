@@ -49,6 +49,18 @@ jobs:
       - name: Publish to npm with provenance
         run: npm publish --workspaces --access public --tag ${{ inputs.npm-tag || 'alpha' }} --provenance
 
+      - name: Get package versions
+        id: versions
+        run: |
+          CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
+          RENDERER_VERSION=$(node -p "require('./packages/renderer/package.json').version")
+          CLI_VERSION=$(node -p "require('./packages/cli/package.json').version")
+          CREATE_VERSION=$(node -p "require('./packages/create-htmplar/package.json').version")
+          echo "core=$CORE_VERSION" >> $GITHUB_OUTPUT
+          echo "renderer=$RENDERER_VERSION" >> $GITHUB_OUTPUT
+          echo "cli=$CLI_VERSION" >> $GITHUB_OUTPUT
+          echo "create=$CREATE_VERSION" >> $GITHUB_OUTPUT
+
       - name: Summary
         run: |
           echo "## 🚀 Published to npm" >> $GITHUB_STEP_SUMMARY
@@ -56,12 +68,12 @@ jobs:
           echo "**Tag**: \`${{ inputs.npm-tag || 'alpha' }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Packages Published:" >> $GITHUB_STEP_SUMMARY
-          echo "- @adidas/htmplar-core@2.0.0-alpha.0" >> $GITHUB_STEP_SUMMARY
-          echo "- @adidas/htmplar-renderer@2.0.0-alpha.0" >> $GITHUB_STEP_SUMMARY
-          echo "- @adidas/htmplar-cli@2.0.0-alpha.0" >> $GITHUB_STEP_SUMMARY
-          echo "- @adidas/create-htmplar@2.0.0-alpha.0" >> $GITHUB_STEP_SUMMARY
+          echo "- @adidas/htmplar-core@${{ steps.versions.outputs.core }}" >> $GITHUB_STEP_SUMMARY
+          echo "- @adidas/htmplar-renderer@${{ steps.versions.outputs.renderer }}" >> $GITHUB_STEP_SUMMARY
+          echo "- @adidas/htmplar-cli@${{ steps.versions.outputs.cli }}" >> $GITHUB_STEP_SUMMARY
+          echo "- @adidas/create-htmplar@${{ steps.versions.outputs.create }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Install:" >> $GITHUB_STEP_SUMMARY
+          echo "### Quick Start:" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "npm install @adidas/htmplar-core@${{ inputs.npm-tag || 'alpha' }}" >> $GITHUB_STEP_SUMMARY
+          echo "npx @adidas/create-htmplar@${{ inputs.npm-tag || 'alpha' }} my-project" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
