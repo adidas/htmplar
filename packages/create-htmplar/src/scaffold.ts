@@ -110,9 +110,7 @@ async function createProject(config: ProjectConfig) {
       });
       installSpinner.succeed(chalk.green('Dependencies installed!'));
     } catch {
-      installSpinner.fail(
-        chalk.yellow('Failed to install dependencies automatically')
-      );
+      installSpinner.fail(chalk.yellow('Failed to install dependencies automatically'));
       console.log(
         chalk.dim(
           `\nYou can install them manually by running: ${getInstallCommand(config.packageManager)}`
@@ -127,12 +125,8 @@ async function createProject(config: ProjectConfig) {
     console.log(chalk.cyan('Next steps:'));
     console.log('');
     console.log(`  ${chalk.bold(`cd ${config.name}`)}`);
-    console.log(
-      `  ${chalk.bold(getDevCommand(config.packageManager))} - Start dev server`
-    );
-    console.log(
-      `  ${chalk.bold(getBuildCommand(config.packageManager))} - Build emails`
-    );
+    console.log(`  ${chalk.bold(getDevCommand(config.packageManager))} - Start dev server`);
+    console.log(`  ${chalk.bold(getBuildCommand(config.packageManager))} - Build emails`);
     console.log('');
   } catch (error) {
     spinner.fail('Failed to create project');
@@ -165,10 +159,7 @@ async function createPackageJson(config: ProjectConfig) {
     },
   };
 
-  await writeFile(
-    join(config.path, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
-  );
+  await writeFile(join(config.path, 'package.json'), JSON.stringify(packageJson, null, 2));
 }
 
 async function createTsConfig(config: ProjectConfig) {
@@ -191,10 +182,7 @@ async function createTsConfig(config: ProjectConfig) {
     exclude: ['node_modules', 'dist'],
   };
 
-  await writeFile(
-    join(config.path, 'tsconfig.json'),
-    JSON.stringify(tsConfig, null, 2)
-  );
+  await writeFile(join(config.path, 'tsconfig.json'), JSON.stringify(tsConfig, null, 2));
 }
 
 async function createGitIgnore(config: ProjectConfig) {
