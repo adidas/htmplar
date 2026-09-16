@@ -2,6 +2,16 @@
   "name": "@adidas/htmplar-renderer",
   "version": "2.0.0-alpha.0",
   "description": "Email rendering engine for HTMplar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adidas/htmplar.git",
+    "directory": "packages/renderer"
+  },
+  "homepage": "https://github.com/adidas/htmplar#readme",
+  "bugs": {
+    "url": "https://github.com/adidas/htmplar/issues"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
