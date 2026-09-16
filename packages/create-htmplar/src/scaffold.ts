@@ -97,10 +97,6 @@ async function createProject(config: ProjectConfig) {
     spinner.text = 'Creating example email...';
     await createExampleEmail(config);
 
-    spinner.text = 'Creating dev server files...';
-    await createIndexHtml(config);
-    await createMainFile(config);
-
     spinner.succeed(chalk.green('Project created!'));
 
     // Install dependencies
@@ -264,7 +260,7 @@ ${runPrefix}preview
 
 ## Creating Emails
 
-Create a new \`.tsx\` file in the \`src/\` directory:
+Create a new \`.tsx\` file in the \`src/\` directory and it will automatically appear in the dev server:
 
 \`\`\`tsx
 import React from 'react';
@@ -274,13 +270,15 @@ export default function MyEmail() {
   return (
     <Block backgroundColor="#ffffff" padding={40}>
       <Text fontSize={24}>Hello World!</Text>
-      <Button href="https://example.com">
+      <Button href="https://example.com" fullWidth>
         Click me
       </Button>
     </Block>
   );
 }
 \`\`\`
+
+The dev server will automatically create a route at \`/my-email\` for preview.
 
 ## Documentation
 
@@ -369,59 +367,4 @@ function getDevCommand(pm: ProjectConfig['packageManager']): string {
 
 function getBuildCommand(pm: ProjectConfig['packageManager']): string {
   return `${getRunPrefix(pm)}build`;
-}
-
-async function createIndexHtml(config: ProjectConfig) {
-  const html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTMplar Dev - Email Templates</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.${config.typescript ? 'tsx' : 'jsx'}"></script>
-  </body>
-</html>
-`;
-
-  await writeFile(join(config.path, 'index.html'), html);
-}
-
-async function createMainFile(config: ProjectConfig) {
-  const ext = config.typescript ? 'tsx' : 'jsx';
-
-  const mainFile = `import React from 'react';
-import { createRoot } from 'react-dom/client';
-import WelcomeEmail from './welcome';
-
-function App() {
-  return (
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>📧 HTMplar Email Templates</h1>
-      <p style={{ color: '#666', marginTop: '10px' }}>
-        Preview your email templates below. Changes will hot reload automatically.
-      </p>
-
-      <div style={{ marginTop: '40px' }}>
-        <h2 style={{ fontSize: '18px', marginBottom: '15px' }}>Welcome Email</h2>
-        <div style={{
-          border: '1px solid #e0e0e0',
-          borderRadius: '8px',
-          overflow: 'hidden',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-        }}>
-          <WelcomeEmail />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const root = createRoot(document.getElementById('root')${config.typescript ? '!' : ''});
-root.render(<App />);
-`;
-
-  await writeFile(join(config.path, 'src', `main.${ext}`), mainFile);
 }
