@@ -140,6 +140,9 @@ export async function startDevServer(options: DevOptions) {
   const port = parseInt(options.port, 10);
 
   try {
+    // Disable telemetry
+    process.env.VITE_TELEMETRY_DISABLED = '1';
+
     // Discover email templates
     const templates = await discoverEmailTemplates();
 
