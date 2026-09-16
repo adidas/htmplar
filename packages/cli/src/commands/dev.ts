@@ -21,7 +21,7 @@ async function discoverEmailTemplates(): Promise<string[]> {
           file !== 'main.jsx'
       )
       .map((file) => file.replace(/\.(tsx|jsx)$/, ''));
-  } catch (error) {
+  } catch {
     return [];
   }
 }

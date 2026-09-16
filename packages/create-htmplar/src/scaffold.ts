@@ -109,7 +109,7 @@ async function createProject(config: ProjectConfig) {
         stdio: 'pipe',
       });
       installSpinner.succeed(chalk.green('Dependencies installed!'));
-    } catch (error) {
+    } catch {
       installSpinner.fail(
         chalk.yellow('Failed to install dependencies automatically')
       );
