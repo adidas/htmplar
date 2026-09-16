@@ -1,6 +1,6 @@
 {
   "name": "@adidas/htmplar-renderer",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Email rendering engine for HTMplar",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

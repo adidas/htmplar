@@ -25,13 +25,13 @@ export async function initProject(name?: string) {
         preview: 'htmplar preview',
       },
       dependencies: {
-        '@adidas/htmplar-core': '^2.0.0-alpha.1',
-        '@adidas/htmplar-renderer': '^2.0.0-alpha.1',
+        '@adidas/htmplar-core': '^2.0.0-alpha.2',
+        '@adidas/htmplar-renderer': '^2.0.0-alpha.2',
         react: '^18.3.1',
         'react-dom': '^18.3.1',
       },
       devDependencies: {
-        '@adidas/htmplar-cli': '^2.0.0-alpha.1',
+        '@adidas/htmplar-cli': '^2.0.0-alpha.2',
         '@types/react': '^18.3.8',
         '@types/react-dom': '^18.3.0',
         typescript: '^5.6.2',
