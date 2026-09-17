@@ -1,6 +1,5 @@
 {
-  "name": "htmplar-monorepo",
-  "version": "2.0.0-alpha.0",
+  "name": "htmplar",
   "private": true,
   "description": "Modern email development with React, TypeScript, and Vite - Monorepo root",
   "repository": {
