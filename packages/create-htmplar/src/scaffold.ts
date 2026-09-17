@@ -99,6 +99,32 @@ async function createProject(config: ProjectConfig) {
 
     spinner.succeed(chalk.green('Project created!'));
 
+    // Initialize git repository
+    console.log('');
+    const gitSpinner = ora('Initializing git repository...').start();
+    try {
+      execSync('git init', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      execSync('git add -A', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      execSync('git commit -m "Initial commit from HTMplar"', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      gitSpinner.succeed(chalk.green('Git repository initialized!'));
+    } catch {
+      gitSpinner.fail(chalk.yellow('Failed to initialize git repository'));
+      console.log(
+        chalk.dim(
+          '\nYou can initialize git manually by running: git init && git add -A && git commit -m "Initial commit"'
+        )
+      );
+    }
+
     // Install dependencies
     console.log('');
     const installSpinner = ora('Installing dependencies...').start();
@@ -146,13 +172,13 @@ async function createPackageJson(config: ProjectConfig) {
       preview: 'htmplar preview',
     },
     dependencies: {
-      '@adidas/htmplar-core': '^2.0.0-alpha.2',
-      '@adidas/htmplar-renderer': '^2.0.0-alpha.2',
+      '@adidas/htmplar-core': '^2.0.0-alpha.3',
+      '@adidas/htmplar-renderer': '^2.0.0-alpha.3',
       react: '^18.3.1',
       'react-dom': '^18.3.1',
     },
     devDependencies: {
-      '@adidas/htmplar-cli': '^2.0.0-alpha.2',
+      '@adidas/htmplar-cli': '^2.0.0-alpha.3',
       '@types/react': '^18.3.8',
       '@types/react-dom': '^18.3.0',
       ...(config.typescript ? { typescript: '^5.6.2' } : {}),
