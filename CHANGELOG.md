@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-alpha.3] - 2026-09-17
+
+### Added
+- **create-htmplar**: Automatically initialize git repository when scaffolding new projects
+- **create-htmplar**: Create initial commit with all generated files for ready-to-push projects
+- **create-htmplar**: Graceful handling of git initialization failures with helpful messages
+
+### Changed
+- **CI/CD**: Make publish workflow summary dynamic with actual package versions
+- **CI/CD**: Remove hardcoded version numbers from GitHub Actions output
+
 ## [Unreleased]
 
 ### Added (v2.0.0)
