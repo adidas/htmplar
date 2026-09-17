@@ -99,6 +99,32 @@ async function createProject(config: ProjectConfig) {
 
     spinner.succeed(chalk.green('Project created!'));
 
+    // Initialize git repository
+    console.log('');
+    const gitSpinner = ora('Initializing git repository...').start();
+    try {
+      execSync('git init', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      execSync('git add -A', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      execSync('git commit -m "Initial commit from HTMplar"', {
+        cwd: config.path,
+        stdio: 'pipe',
+      });
+      gitSpinner.succeed(chalk.green('Git repository initialized!'));
+    } catch {
+      gitSpinner.fail(chalk.yellow('Failed to initialize git repository'));
+      console.log(
+        chalk.dim(
+          '\nYou can initialize git manually by running: git init && git add -A && git commit -m "Initial commit"'
+        )
+      );
+    }
+
     // Install dependencies
     console.log('');
     const installSpinner = ora('Installing dependencies...').start();
