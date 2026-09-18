@@ -172,13 +172,13 @@ async function createPackageJson(config: ProjectConfig) {
       preview: 'htmplar preview',
     },
     dependencies: {
-      '@adidas/htmplar-core': '^2.0.0-alpha.3',
-      '@adidas/htmplar-renderer': '^2.0.0-alpha.3',
+      '@adidas/htmplar-core': '^2.0.0-alpha.4',
+      '@adidas/htmplar-renderer': '^2.0.0-alpha.4',
       react: '^18.3.1',
       'react-dom': '^18.3.1',
     },
     devDependencies: {
-      '@adidas/htmplar-cli': '^2.0.0-alpha.3',
+      '@adidas/htmplar-cli': '^2.0.0-alpha.4',
       '@types/react': '^18.3.8',
       '@types/react-dom': '^18.3.0',
       ...(config.typescript ? { typescript: '^5.6.2' } : {}),
