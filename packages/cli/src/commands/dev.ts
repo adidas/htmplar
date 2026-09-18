@@ -92,7 +92,6 @@ function createRoutingPlugin(templates: string[]) {
         if (routeMatch) {
           const templateName = routeMatch[1];
           if (templates.includes(templateName)) {
-            const ext = await getTemplateExtension(templateName);
             const html = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -106,19 +105,31 @@ function createRoutingPlugin(templates: string[]) {
   </head>
   <body>
     <div id="root"></div>
-    <script type="module">
-      import React from 'react';
-      import { createRoot } from 'react-dom/client';
-      import EmailComponent from '/src/${templateName}.${ext}';
-
-      const root = createRoot(document.getElementById('root'));
-      root.render(React.createElement(EmailComponent));
-    </script>
+    <script type="module" src="/@htmplar-preview/${templateName}"></script>
   </body>
 </html>`;
 
             res.setHeader('Content-Type', 'text/html');
             res.end(html);
+            return;
+          }
+        }
+
+        // Virtual module for template preview
+        const previewMatch = url.match(/^\/@htmplar-preview\/([^/?]+)/);
+        if (previewMatch) {
+          const templateName = previewMatch[1];
+          if (templates.includes(templateName)) {
+            const ext = await getTemplateExtension(templateName);
+            const js = `import React from 'react';
+import { createRoot } from 'react-dom/client';
+import EmailComponent from '/src/${templateName}.${ext}';
+
+const root = createRoot(document.getElementById('root'));
+root.render(React.createElement(EmailComponent));`;
+
+            res.setHeader('Content-Type', 'application/javascript');
+            res.end(js);
             return;
           }
         }
