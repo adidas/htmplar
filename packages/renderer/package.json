@@ -1,6 +1,6 @@
 {
   "name": "@adidas/htmplar-renderer",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "Email rendering engine for HTMplar",
   "license": "MIT",
   "repository": {
