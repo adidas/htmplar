@@ -1,4 +1,4 @@
-import { createServer, ViteDevServer } from 'vite';
+import { createServer, ViteDevServer, InlineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import chalk from 'chalk';
 import path from 'path';
@@ -147,12 +147,12 @@ export async function startDevServer(options: DevOptions) {
     const templates = await discoverEmailTemplates();
 
     // Create Vite dev server
-    const server = await createServer({
+    const config: InlineConfig = {
       configFile: false,
       root: process.cwd(),
       server: {
         port,
-        open: options.open ? '/' : false,
+        open: options.open,
       },
       plugins: [react(), createRoutingPlugin(templates)],
       resolve: {
@@ -167,7 +167,12 @@ export async function startDevServer(options: DevOptions) {
           },
         ],
       },
-    });
+      optimizeDeps: {
+        include: ['react', 'react-dom', 'react/jsx-runtime'],
+      },
+    };
+
+    const server = await createServer(config);
 
     await server.listen();
 
