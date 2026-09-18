@@ -152,17 +152,20 @@ export async function startDevServer(options: DevOptions) {
       root: process.cwd(),
       server: {
         port,
-        open: options.open,
+        open: options.open ? '/' : false,
       },
       plugins: [react(), createRoutingPlugin(templates)],
       resolve: {
-        alias: {
-          '@adidas/htmplar-core': path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-core'),
-          '@adidas/htmplar-renderer': path.resolve(
-            process.cwd(),
-            'node_modules/@adidas/htmplar-renderer'
-          ),
-        },
+        alias: [
+          {
+            find: '@adidas/htmplar-core',
+            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-core'),
+          },
+          {
+            find: '@adidas/htmplar-renderer',
+            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-renderer'),
+          },
+        ],
       },
     });
 
