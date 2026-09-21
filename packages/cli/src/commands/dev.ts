@@ -2,7 +2,8 @@ import { createServer, ViteDevServer, InlineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import chalk from 'chalk';
 import path from 'path';
-import { readdir } from 'fs/promises';
+import { readdir, writeFile, mkdir } from 'fs/promises';
+import { existsSync } from 'fs';
 
 interface DevOptions {
   port: string;
@@ -26,32 +27,48 @@ async function discoverEmailTemplates(): Promise<string[]> {
   }
 }
 
-function createRoutingPlugin(templates: string[]) {
-  return {
-    name: 'htmplar-routing',
-    resolveId(id: string) {
-      // Handle virtual module IDs
-      if (id.startsWith('/@htmplar-preview/')) {
-        return id;
-      }
-      return null;
-    },
-    async load(id: string) {
-      // Load virtual preview modules
-      if (id.startsWith('/@htmplar-preview/')) {
-        const templateName = id.replace('/@htmplar-preview/', '');
-        if (templates.includes(templateName)) {
-          const ext = await getTemplateExtension(templateName);
-          return `import React from 'react';
+async function createPreviewFiles(templateName: string, ext: string) {
+  const previewDir = path.join(process.cwd(), '.htmplar');
+  if (!existsSync(previewDir)) {
+    await mkdir(previewDir, { recursive: true });
+  }
+
+  // Create the entry JS file
+  const entryPath = path.join(previewDir, `preview-${templateName}.js`);
+  const entryCode = `import React from 'react';
 import { createRoot } from 'react-dom/client';
-import EmailComponent from '/src/${templateName}.${ext}';
+import EmailComponent from '../src/${templateName}.${ext}';
 
 const root = createRoot(document.getElementById('root'));
 root.render(React.createElement(EmailComponent));`;
-        }
-      }
-      return null;
-    },
+
+  await writeFile(entryPath, entryCode);
+
+  // Create the HTML file
+  const htmlPath = path.join(previewDir, `${templateName}.html`);
+  const htmlCode = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${templateName} - HTMplar</title>
+    <style>
+      body { margin: 0; padding: 0; }
+      #root { min-height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./preview-${templateName}.js"></script>
+  </body>
+</html>`;
+
+  await writeFile(htmlPath, htmlCode);
+}
+
+function createRoutingPlugin(templates: string[]) {
+  return {
+    name: 'htmplar-routing',
     configureServer(server: ViteDevServer) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || '';
@@ -110,30 +127,17 @@ root.render(React.createElement(EmailComponent));`;
           return;
         }
 
-        // Template routes - serve dynamic preview
-        const routeMatch = url.match(/^\/([^/?]+)/);
+        // Template routes - redirect to .htmplar HTML files
+        const routeMatch = url.match(/^\/([^/?]+)$/);
         if (routeMatch) {
           const templateName = routeMatch[1];
           if (templates.includes(templateName)) {
-            const html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${templateName} - HTMplar</title>
-    <style>
-      body { margin: 0; padding: 0; }
-      #root { min-height: 100vh; }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/@htmplar-preview/${templateName}"></script>
-  </body>
-</html>`;
+            const ext = await getTemplateExtension(templateName);
+            await createPreviewFiles(templateName, ext);
 
-            res.setHeader('Content-Type', 'text/html');
-            res.end(html);
+            // Redirect to the generated HTML file
+            res.writeHead(302, { Location: `/.htmplar/${templateName}.html` });
+            res.end();
             return;
           }
         }
@@ -162,28 +166,17 @@ export async function startDevServer(options: DevOptions) {
     const templates = await discoverEmailTemplates();
 
     // Create Vite dev server
+    const projectRoot = process.cwd();
     const config: InlineConfig = {
       configFile: false,
-      root: process.cwd(),
+      root: projectRoot,
       server: {
         port,
         open: options.open,
       },
       plugins: [react(), createRoutingPlugin(templates)],
       resolve: {
-        alias: [
-          {
-            find: '@adidas/htmplar-core',
-            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-core'),
-          },
-          {
-            find: '@adidas/htmplar-renderer',
-            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-renderer'),
-          },
-        ],
-      },
-      optimizeDeps: {
-        include: ['react', 'react-dom', 'react/jsx-runtime'],
+        preserveSymlinks: false,
       },
     };
 

@@ -172,13 +172,13 @@ async function createPackageJson(config: ProjectConfig) {
       preview: 'htmplar preview',
     },
     dependencies: {
-      '@adidas/htmplar-core': '^2.0.0-alpha.8',
-      '@adidas/htmplar-renderer': '^2.0.0-alpha.8',
+      '@adidas/htmplar-core': '^2.0.0-alpha.9',
+      '@adidas/htmplar-renderer': '^2.0.0-alpha.9',
       react: '^18.3.1',
       'react-dom': '^18.3.1',
     },
     devDependencies: {
-      '@adidas/htmplar-cli': '^2.0.0-alpha.8',
+      '@adidas/htmplar-cli': '^2.0.0-alpha.9',
       '@types/react': '^18.3.8',
       '@types/react-dom': '^18.3.0',
       ...(config.typescript ? { typescript: '^5.6.2' } : {}),
@@ -333,7 +333,6 @@ export default function WelcomeEmail() {
             backgroundColor="#000000"
             color="#ffffff"
             padding="12px 24px"
-            fullWidth
           >
             View Documentation
           </Button>
