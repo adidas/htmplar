@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-alpha.9] - 2026-09-21
+
+### Fixed
+- **htmplar-cli**: Fix dev server routing by generating static HTML files instead of virtual modules
+- Template preview pages now work correctly with React Fast Refresh
+- Resolved module resolution issues with symlinked dependencies
+
+## [2.0.0-alpha.8] - 2026-09-18
+
+### Fixed
+- **htmplar-cli**: Use Vite plugin resolveId/load hooks for virtual modules (proper Vite transform pipeline)
+
 ## [2.0.0-alpha.7] - 2026-09-18
 
 ### Fixed

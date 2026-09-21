@@ -2,7 +2,8 @@ import { createServer, ViteDevServer, InlineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import chalk from 'chalk';
 import path from 'path';
-import { readdir } from 'fs/promises';
+import { readdir, writeFile, mkdir } from 'fs/promises';
+import { existsSync } from 'fs';
 
 interface DevOptions {
   port: string;
@@ -24,6 +25,45 @@ async function discoverEmailTemplates(): Promise<string[]> {
   } catch {
     return [];
   }
+}
+
+async function createPreviewFiles(templateName: string, ext: string) {
+  const previewDir = path.join(process.cwd(), '.htmplar');
+  if (!existsSync(previewDir)) {
+    await mkdir(previewDir, { recursive: true });
+  }
+
+  // Create the entry JS file
+  const entryPath = path.join(previewDir, `preview-${templateName}.js`);
+  const entryCode = `import React from 'react';
+import { createRoot } from 'react-dom/client';
+import EmailComponent from '../src/${templateName}.${ext}';
+
+const root = createRoot(document.getElementById('root'));
+root.render(React.createElement(EmailComponent));`;
+
+  await writeFile(entryPath, entryCode);
+
+  // Create the HTML file
+  const htmlPath = path.join(previewDir, `${templateName}.html`);
+  const htmlCode = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${templateName} - HTMplar</title>
+    <style>
+      body { margin: 0; padding: 0; }
+      #root { min-height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./preview-${templateName}.js"></script>
+  </body>
+</html>`;
+
+  await writeFile(htmlPath, htmlCode);
 }
 
 function createRoutingPlugin(templates: string[]) {
@@ -87,49 +127,17 @@ function createRoutingPlugin(templates: string[]) {
           return;
         }
 
-        // Template routes - serve dynamic preview
-        const routeMatch = url.match(/^\/([^/?]+)/);
+        // Template routes - redirect to .htmplar HTML files
+        const routeMatch = url.match(/^\/([^/?]+)$/);
         if (routeMatch) {
           const templateName = routeMatch[1];
           if (templates.includes(templateName)) {
-            const html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${templateName} - HTMplar</title>
-    <style>
-      body { margin: 0; padding: 0; }
-      #root { min-height: 100vh; }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/@htmplar-preview/${templateName}"></script>
-  </body>
-</html>`;
-
-            res.setHeader('Content-Type', 'text/html');
-            res.end(html);
-            return;
-          }
-        }
-
-        // Virtual module for template preview
-        const previewMatch = url.match(/^\/@htmplar-preview\/([^/?]+)/);
-        if (previewMatch) {
-          const templateName = previewMatch[1];
-          if (templates.includes(templateName)) {
             const ext = await getTemplateExtension(templateName);
-            const js = `import React from 'react';
-import { createRoot } from 'react-dom/client';
-import EmailComponent from '/src/${templateName}.${ext}';
+            await createPreviewFiles(templateName, ext);
 
-const root = createRoot(document.getElementById('root'));
-root.render(React.createElement(EmailComponent));`;
-
-            res.setHeader('Content-Type', 'application/javascript');
-            res.end(js);
+            // Redirect to the generated HTML file
+            res.writeHead(302, { Location: `/.htmplar/${templateName}.html` });
+            res.end();
             return;
           }
         }
@@ -158,28 +166,17 @@ export async function startDevServer(options: DevOptions) {
     const templates = await discoverEmailTemplates();
 
     // Create Vite dev server
+    const projectRoot = process.cwd();
     const config: InlineConfig = {
       configFile: false,
-      root: process.cwd(),
+      root: projectRoot,
       server: {
         port,
         open: options.open,
       },
       plugins: [react(), createRoutingPlugin(templates)],
       resolve: {
-        alias: [
-          {
-            find: '@adidas/htmplar-core',
-            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-core'),
-          },
-          {
-            find: '@adidas/htmplar-renderer',
-            replacement: path.resolve(process.cwd(), 'node_modules/@adidas/htmplar-renderer'),
-          },
-        ],
-      },
-      optimizeDeps: {
-        include: ['react', 'react-dom', 'react/jsx-runtime'],
+        preserveSymlinks: false,
       },
     };
 
